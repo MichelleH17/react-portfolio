@@ -126,9 +126,10 @@ export const Contact = () => {
                     Name
                 </label>
                 <input 
-                  id="name" 
-                  type="text" 
-                  required 
+                  id="name"
+                  type="text"
+                  autoComplete="name"
+                  required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value})}
                   placeholder="Your name..." 
@@ -142,9 +143,10 @@ export const Contact = () => {
                     Email
                 </label>
                 <input 
-                  id="email" 
-                  type="email" 
-                  required 
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value})}
                   placeholder="your@email.com" className="w-full px-4 py-3 rounded-xl bg-surface border border-secondary/30 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" />
