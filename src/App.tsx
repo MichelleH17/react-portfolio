@@ -9,7 +9,7 @@ import { Values } from "./components/sections/Values"
 
 function App() {
   return (
-    <Layout title="Portfolio">
+    <Layout title="Michaela Havlíková | Frontend developer">
       <Hero />
       <About />
       <Projects />
