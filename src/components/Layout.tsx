@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { Footer } from "./elements/Footer"
 import { Navbar } from "./elements/Navbar"
-import { AnimatedBackground } from "./elements/AnimatedBackground"
 
 interface LayoutProps {
   title: string
@@ -14,8 +13,6 @@ export const Layout = ({title, children}: LayoutProps) => {
   }, [title])
   return (
     <>
-      <AnimatedBackground />
-      
       <Navbar />
 
       <main className="flex flex-col gap-y-20 md:gap-y-32 overflow-hidden">

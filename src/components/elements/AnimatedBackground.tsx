@@ -14,9 +14,9 @@ export const AnimatedBackground = () => {
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {dots.map((dot) => (
         <div key={dot.id} 
-        className="absolute w-1.5 h-1.5 rounded-full opacity-80" 
+        className="absolute w-1.5 h-1.5 rounded-full opacity-40"
         style={{
-          backgroundColor: "#d9b968", 
+          backgroundColor: "var(--color-accent)",
           left: `${dot.left}%`, 
           top: `${dot.top}%`,
           animation: `slow-drift ${dot.animation}s ease-in-out infinite`,

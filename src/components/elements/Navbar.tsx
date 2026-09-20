@@ -32,7 +32,7 @@ export const Navbar = () => {
   }, [])
 
   return (
-    <header className={`fixed inset-x-0 glass-strong top-0 z-50 transition-all duration-500 border-b border-secondary/30 ${ isScrolled ? "py-3" : "py-5"}`}>
+    <header className={`fixed inset-x-0 glass-strong top-0 z-50 transition-all duration-500 border-b border-border ${ isScrolled ? "py-3" : "py-5"}`}>
       <Container>
         <nav className="w-full flex justify-between">
           
@@ -58,7 +58,7 @@ export const Navbar = () => {
               </Button>
             </div>
             <div className="min-w-max">
-              <button onClick={toggleTheme} className="outline-hidden flex relative text-primary hover:text-secondary rounded-full p-2 lg:p-3 border cursor-pointer transition-colors">
+              <button onClick={toggleTheme} className="outline-hidden flex relative text-text-primary hover:text-accent hover:border-accent rounded-full p-2 lg:p-3 border border-border cursor-pointer transition-colors">
                 {theme === "dark" ? (
                   <Moon strokeWidth={1.5} className="w-5 h-5 lg:w-6 lg:h-6" />
                 ) : (
@@ -68,9 +68,9 @@ export const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-primary cursor-pointer">
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-text-primary hover:text-accent cursor-pointer transition-colors">
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>            
+            </button>
           </div>
         </nav>
         
