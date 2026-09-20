@@ -44,25 +44,25 @@ export const Values = () => {
   const Icon = values[currentIdx].icon
 
   return (
-    <section id="values" className="pt-32 relative text-primary overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+    <section id="values" className="pt-32 relative text-text-primary overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <Container className="relative z-10">
-        
+
         {/* Section header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
-          <span className="text-secondary text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span className="text-navy text-sm font-medium tracking-wider uppercase animate-fade-in">
             How I work
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary">
+          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-accent">
             More than just
-            <span className="font-serif italic font-normal text-primary">
+            <span className="font-serif italic font-normal text-text-primary">
               {" "}
               writing code.
             </span>
-          </h2>   
-          <p className="text-primary/70 text-lg animate-fade-in animation-delay-200">
+          </h2>
+          <p className="text-text-secondary text-lg animate-fade-in animation-delay-200">
             I believe good development comes from thoughtful decisions, clear communication and a willingness to keep learning along the way.
-          </p>       
+          </p>
         </div>
 
         {/* Carousel */}
@@ -70,28 +70,28 @@ export const Values = () => {
           <div className="relative">
 
             {/* Main card */}
-            <div className="glass p-8 md:p-12 rounded-3xl glow-border animate-fade-in animation-delay-200">
+            <div className="card p-8 md:p-12 rounded-3xl animate-fade-in animation-delay-200">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-white dark:text-bg" />
                 </div>
-                <h3 className="text-lg md:text-xl font-semibold leading-relaxed mb-2">{values[currentIdx].title}</h3>
-                <p className="text-sm md:text-lg font-medium text-primary/70">{values[currentIdx].description}</p>
+                <h3 className="text-lg md:text-xl font-semibold leading-relaxed mb-2 text-text-primary">{values[currentIdx].title}</h3>
+                <p className="text-sm md:text-lg font-medium text-text-secondary">{values[currentIdx].description}</p>
               </div>
             </div>
           </div>
 
           {/* Navigation */}
           <div className="flex items-center justify-center gap-4 my-8">
-            <button onClick={previous} className="p-3 rounded-full glass hover:bg-secondary hover:text-white transition-all">
+            <button onClick={previous} className="p-3 rounded-full border border-border hover:bg-accent hover:border-accent hover:text-white dark:hover:text-bg transition-all">
               <ChevronLeft />
             </button>
             <div className="flex gap-2">
               {values.map((_, idx) => (
-                <button key={idx} onClick={() => setCurrentIdx(idx)} className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIdx ? "w-8 bg-secondary" : "bg-primary/30 hover:bg-primary/60"}`} />
+                <button key={idx} onClick={() => setCurrentIdx(idx)} className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIdx ? "w-8 bg-accent" : "bg-border hover:bg-accent/50"}`} />
               ))}
             </div>
-            <button onClick={next} className="p-3 rounded-full glass hover:bg-secondary hover:text-white transition-all">
+            <button onClick={next} className="p-3 rounded-full border border-border hover:bg-accent hover:border-accent hover:text-white dark:hover:text-bg transition-all">
               <ChevronRight />
             </button>
           </div>

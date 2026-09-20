@@ -87,26 +87,26 @@ export const Contact = () => {
   }
   
   return (
-    <section id="contact" className="pt-32 pb-20 md:pb-32 relative text-primary overflow-hidden">
+    <section id="contact" className="pt-32 pb-20 md:pb-32 relative text-text-primary overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
       </div>
 
       <Container className="relative z-10">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <span className="text-secondary text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span className="text-navy text-sm font-medium tracking-wider uppercase animate-fade-in">
             Get In Touch
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100">
             Let's build{" "}
-            <span className="font-serif italic font-normal text-secondary">
+            <span className="font-serif italic font-normal text-accent">
               something together.
             </span>
           </h2>
-          <div className="text-primary/70 text-lg animate-fade-in animation-delay-200">
+          <div className="text-text-secondary text-lg animate-fade-in animation-delay-200">
             <p>
               I'm looking for my next opportunity in web development, with a strong focus on frontend. I'm open to full-time roles, collaborations and interesting projects and I'd be happy to contribute beyond frontend when it makes sense.
             </p>
@@ -117,54 +117,54 @@ export const Contact = () => {
         </div>  
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          <div className="glass p-8 rounded-3xl animate-fade-in animation-delay-300">
+          <div className="card p-8 rounded-3xl animate-fade-in animation-delay-300">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label 
-                  htmlFor="name" 
-                  className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-2 text-text-secondary">
                     Name
                 </label>
-                <input 
+                <input
                   id="name"
                   type="text"
                   autoComplete="name"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value})}
-                  placeholder="Your name..." 
-                  className="w-full px-4 py-3 rounded-xl bg-surface border border-secondary/30 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" />
+                  placeholder="Your name..."
+                  className="w-full px-4 py-3 rounded-xl bg-surface-muted text-text-primary border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
               </div>
 
               <div>
-                <label 
-                  htmlFor="email" 
-                  className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-2 text-text-secondary">
                     Email
                 </label>
-                <input 
+                <input
                   id="email"
                   type="email"
                   autoComplete="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value})}
-                  placeholder="your@email.com" className="w-full px-4 py-3 rounded-xl bg-surface border border-secondary/30 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" />
+                  placeholder="your@email.com" className="w-full px-4 py-3 rounded-xl bg-surface-muted text-text-primary border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
               </div>
 
               <div>
-                <label 
-                  htmlFor="message" 
-                  className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2 text-text-secondary">
                     Message
                 </label>
-                <textarea 
-                  id="message" 
-                  rows={6} 
-                  required 
+                <textarea
+                  id="message"
+                  rows={6}
+                  required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value})}
-                  placeholder="Your message..." className="w-full px-4 py-3 rounded-xl bg-surface border border-secondary/30 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all resize-none" />
+                  placeholder="Your message..." className="w-full px-4 py-3 rounded-xl bg-surface-muted text-text-primary border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all resize-none" />
               </div>
               <Button 
                 className="w-full" 
@@ -186,8 +186,8 @@ export const Contact = () => {
                   className={`flex items-center gap-3
                     p-4 rounded-xl ${
                       submitStatus.type === "success"
-                        ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                        : "bg-red-500/10 border border-red-500/20 text-red-400"
+                        ? "bg-green-500/10 border border-green-500/30 text-green-700 dark:text-green-400"
+                        : "bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-400"
                     }`}
                 >
                   {submitStatus.type === "success" ? (
@@ -203,8 +203,8 @@ export const Contact = () => {
 
           {/* Contact info */}
           <div className="space-y-6 animate-fade-in animation-delay-400">
-            <div className="glass rounded-3xl p-8">
-              <h3 className="text-xl font-semibold mb-6">
+            <div className="card rounded-3xl p-8">
+              <h3 className="text-xl font-semibold mb-6 text-text-primary">
                 Contact information
               </h3>
               <div className="space-y-4">
@@ -212,16 +212,16 @@ export const Contact = () => {
                   <a
                     key={i}
                     href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-secondary/5 transition-colors group"
+                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-accent-soft transition-colors group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                      <item.icon className="w-5 h-5 text-secondary" />
+                    <div className="w-12 h-12 rounded-xl bg-accent-soft flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                      <item.icon className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <div className="text-sm text-primary/70">
+                      <div className="text-sm text-text-muted">
                         {item.label}
                       </div>
-                      <div className="font-medium">{item.value}</div>
+                      <div className="font-medium text-text-primary">{item.value}</div>
                     </div>
                   </a>
                 ))}
@@ -229,12 +229,12 @@ export const Contact = () => {
             </div>
 
             {/* Availability card */}
-            <div className="glass rounded-3xl p-8">
+            <div className="card rounded-3xl p-8">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-3 h-3 bg-green-700 rounded-full animate-pulse" />
-                <span className="font-semibold text-lg">Open to new opportunities</span>
+                <span className="w-3 h-3 bg-accent rounded-full animate-pulse" />
+                <span className="font-semibold text-lg text-text-primary">Open to new opportunities</span>
               </div>
-              <p className="text-primary/70 text-sm">
+              <p className="text-text-secondary text-sm">
                 I'm looking for my next opportunity where I can keep learning, contribute to meaningful projects and work with great people. My main focus is frontend development, but I'm also open to collaborations involving design, backend or other parts of web development.
               </p>
             </div>

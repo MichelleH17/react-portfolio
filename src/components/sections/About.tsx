@@ -26,24 +26,24 @@ const highlights = [
 
 export const About = () => {
   return (
-    <section id="about" className="pt-32 relative overflow-hidden text-primary">
+    <section id="about" className="pt-32 relative overflow-hidden text-text-primary">
       <Container className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left column */}
           <div className="space-y-8">
             <div className="animate-fade-in">
-              <span className="text-secondary text-sm font-medium tracking-wider uppercase">
+              <span className="text-navy text-sm font-medium tracking-wider uppercase">
                 About me
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-secondary leading-tight animate-fade-in animation-delay-100">
+            <h2 className="text-4xl md:text-5xl font-bold text-accent leading-tight animate-fade-in animation-delay-100">
               Turning ideas into reality,
-              <span className="font-serif text-primary italic font-normal">
+              <span className="font-serif text-text-primary italic font-normal">
                 {" "}
                 one component at a time.</span>
             </h2>
-            <div className="space-y-4 text-primary/70 text-lg animate-fade-in animation-delay-200">
+            <div className="space-y-4 text-text-secondary text-lg animate-fade-in animation-delay-200">
               <p>
                 I'm a creative front-end developer with over 4 years of professional experience building web applications and digital experiences. I enjoy taking ideas and turning them into responsive, functional and thoughtfully designed websites.
               </p>
@@ -54,25 +54,25 @@ export const About = () => {
                 I enjoy collaborating with designers and product teams, experimenting with new technologies and finding simple solutions to interesting problems. I'm naturally curious and always looking for something new to learn.
               </p>
             </div>
-            <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
-              <p className="font-medium italic text-lg">
+            <div className="card border-l-4 border-l-navy rounded-2xl p-6 animate-fade-in animation-delay-300">
+              <p className="font-medium italic text-lg text-text-primary">
                 "I like building things that make sense - for the people using them and for the people maintaining them. And I'm always curious about what I could build next."
               </p>
-            </div>  
+            </div>
           </div>
 
           {/* Right column */}
           <div className="grid sm:grid-cols-2 gap-6">
             {highlights.map((item, idx) => (
-              <div key={idx} className="glass p-6 rounded-2xl animate-fade-in" style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
-                <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 hover:bg-secondary/20">
-                  <item.icon className="w-6 h-6 text-secondary" />
+              <div key={idx} className="card p-6 rounded-2xl animate-fade-in" style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
+                <div className="w-12 h-12 rounded-xl bg-accent-soft flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-primary/70">{item.description}</p>
+                <h3 className="text-lg font-semibold mb-2 text-text-primary">{item.title}</h3>
+                <p className="text-sm text-text-secondary">{item.description}</p>
               </div>
             ))}
-          </div>          
+          </div>
         </div>
       </Container>
     </section>
