@@ -9,7 +9,7 @@ interface ButtonProps {
 
 export const Button = ({ children, className = "", size = "default", type, disabled = false, onClick }: ButtonProps) => {
 
-  const baseClasses = "relative overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/25 cursor-pointer"
+  const baseClasses = "relative overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 bg-accent text-white dark:text-bg hover:bg-accent/90 cursor-pointer"
 
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",

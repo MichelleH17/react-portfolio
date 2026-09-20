@@ -10,10 +10,10 @@ export const AnimatedButton = ({ children, href, download }: AnimatedButtonProps
     <Tag
       href={href}
       download={download}
-      className="relative bg-transparent border border-secondary/40
-        text-primary hover:border-secondary/50 transition-all
+      className="relative bg-transparent border border-navy
+        text-navy transition-all
         duration-1000 focus:outline-none focus-visible:ring-2
-        focus-visible:ring-secondary focus-visible:ring-offset-2
+        focus-visible:ring-navy focus-visible:ring-offset-2
         disabled:opacity-50 disabled:cursor-not-allowed group
         px-8 py-4 text-lg font-medium rounded-full overflow-visible
         animated-border inline-flex items-center justify-center"
@@ -28,7 +28,7 @@ export const AnimatedButton = ({ children, href, download }: AnimatedButtonProps
         <path
           d="M 30,1 A 29,29 0 0 0 1,30 L 1,30 A 29,29 0 0 0 30,59 L 170,59 A 29,29 0 0 0 199,30 L 199,30 A 29,29 0 0 0 170,1 Z"
           fill="none"
-          stroke="var(--color-secondary)"
+          stroke="var(--color-navy)"
           strokeWidth="2"
           strokeDasharray="400 550"
           strokeDashoffset="400"
