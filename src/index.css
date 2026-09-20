@@ -1,42 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #ffffff;
-  --color-box: #ffffff;
-  --color-border: #d9b968;
-  --color-surface: #ffffff;
-  --color-primary: #15120a;
-  --color-secondary: #d9b968;
-  --color-gold-lighter: #f7f1e0;
-  --color-gold-darker: #d9b968;
+  --color-bg: #f7f4ec;
+  --color-surface: #fffdf8;
+  --color-surface-muted: #eaf1eb;
+  --color-text-primary: #1e3a5f;
+  --color-text-secondary: #344b4a;
+  --color-text-muted: #5d6d6b;
+  --color-accent: #1f6e52;
+  --color-accent-soft: #d8e9df;
+  --color-navy: #3e6d9b;
+  --color-blue-soft: #e0eaf4;
+  --color-border: #d5ded7;
+  --color-border-accent: #1f6e52;
 }
 
 .dark {
-  --color-bg: #15120a;
-  --color-box: #15120a;
-  --color-border: #d9b968;
-  --color-primary: #ffffff;
-  --color-secondary: #d9b968;
-  --color-surface: #15120a;
-  --color-gold-lighter: #f7f1e0;
-  --color-gold-darker: #d9b968;
+  --color-bg: #101b19;
+  --color-surface: #182824;
+  --color-surface-muted: #20352f;
+  --color-text-primary: #f3f4ec;
+  --color-text-secondary: #c7d5d0;
+  --color-text-muted: #a1b4ad;
+  --color-accent: #3fbe8a;
+  --color-accent-soft: #234c3d;
+  --color-navy: #6fa8dc;
+  --color-blue-soft: #293f55;
+  --color-border: #344a42;
+  --color-border-accent: #3fbe8a;
 }
 
 @layer utilities {
   .bg-body {
     background-color: var(--color-bg);
-  }
-  .bg-box {
-    background-color: var(--color-box);
-  }
-  .text-heading-1 {
-    color: var(--heading-1);
-  }
-  .text-heading-2 {
-    color: var(--heading-2);
-  }
-  .text-heading-3 {
-    color: var(--heading-3);
   }
 
   @keyframes slow-drift {
@@ -58,13 +54,11 @@
   @keyframes fade-in {
     from {
       opacity: 0;
-      transform: translateY(20px);
-      filter: blur(10px);
+      transform: translateY(12px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
-      filter: blur(0);
     }
   }
 
@@ -141,17 +135,14 @@
   }
 
   .animated-border:hover {
-    background-color: color-mix(in srgb, #d9b968 15%, transparent);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 0 20px color-mix(in srgb, #d9b968 20%, transparent);
+    background-color: color-mix(in srgb, var(--color-navy) 8%, transparent);
   }
 
   .timeline-glow {
-    box-shadow:
-      0 0 40px color-mix(in srgb, var(--color-secondary) 35%, transparent),
-      0 0 80px color-mix(in srgb, var(--color-secondary) 25%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-navy) 20%, transparent);
   }
 }
+
 @layer base {
   body {
     background-color: var(--color-bg);
@@ -173,24 +164,18 @@
 
 @layer components {
   .glass {
-    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    background-color: color-mix(in srgb, var(--color-surface) 65%, transparent);
     backdrop-filter: blur(16px);
-    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
   }
 
   .glass-strong {
-    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);
     backdrop-filter: blur(24px);
   }
 
-  .glow-text {
-    text-shadow: 0 0 30px
-      color-mix(in srgb, var(--color-secondary) 50%, transparent);
-  }
-
-  .glow-border {
-    box-shadow:
-      0 0 20px color-mix(in srgb, var(--color-secondary) 20%, transparent),
-      inset 0 0 20px color-mix(in srgb, var(--color-secondary) 5%, transparent);
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
   }
 }
