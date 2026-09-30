@@ -93,6 +93,12 @@
     animation: marquee 30s linear infinite;
   }
 
+  @media (max-width: 640px) {
+    .animate-marquee {
+      animation-duration: 12s;
+    }
+  }
+
   .animation-delay-100 {
     animation-delay: 100ms;
   }
