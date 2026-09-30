@@ -1,6 +1,6 @@
 import { BookOpen, Search, PanelsTopLeft, Hammer, Users, ChevronLeft, ChevronRight } from "lucide-react"
 import { Container } from "../shared/Container"
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 const values = [
   {
@@ -43,6 +43,19 @@ export const Values = () => {
 
   const Icon = values[currentIdx].icon
 
+  const touchStartX = useRef(0)
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const delta = e.changedTouches[0].clientX - touchStartX.current
+    if (Math.abs(delta) < 50) return
+    if (delta < 0) next()
+    else previous()
+  }
+
   return (
     <section id="values" className="pt-32 relative text-text-primary overflow-hidden">
       <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -70,7 +83,11 @@ export const Values = () => {
           <div className="relative">
 
             {/* Main card */}
-            <div className="card p-8 md:p-12 rounded-3xl animate-fade-in animation-delay-200">
+            <div
+              className="card p-8 md:p-12 rounded-3xl animate-fade-in animation-delay-200 touch-pan-y"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               <div>
                 <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-4">
                   <Icon className="w-6 h-6 text-white dark:text-bg" />
