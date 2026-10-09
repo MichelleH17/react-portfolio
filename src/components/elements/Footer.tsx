@@ -1,8 +1,6 @@
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6"
 import { Container } from "../shared/Container";
-import logoDark from "../../assets/logo-dark.svg"
-import logoLight from "../../assets/logo-light.svg"
-import { useThemeStore } from "../../store/ThemeStore"
+import { Logo } from "../shared/Logo"
 
 const socialLinks = [
   { icon: FaGithub, href: "https://github.com/MichelleH17", label: "GitHub" },
@@ -10,24 +8,16 @@ const socialLinks = [
 ]
 
 export const Footer = () => {
-  const { theme } = useThemeStore()
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="py-5 border-t text-text-primary border-border glass-strong">
       <Container>
-        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-3">
-
-          {/* Logo & Copyright */}
-
-          <a href="#" className="relative md:-mb-2">
-            <img src={theme === "dark" ? logoLight : logoDark} alt="MH Logo" className="h-10 w-10" />
-          </a>
-          <p className="text-sm text-text-secondary md:-mb-1">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <Logo full href="#" />
+          <p className="text-sm text-text-secondary">
             © {currentYear} Michaela Havlíková. All rights reserved.
           </p>
-
-          {/* Social Links */}
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <a

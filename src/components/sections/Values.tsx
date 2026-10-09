@@ -13,7 +13,7 @@ const values = [
   {
     icon: PanelsTopLeft,
     title: "I care about the details",
-    description: "Working with Figma and implementing designs taught me to notice the small things - spacing, responsiveness, consistency and how components behave.",
+    description: "Working with Figma and implementing designs taught me to notice the small things, like spacing, responsiveness, consistency and how components behave.",
   },
   {
     icon: Hammer,
@@ -72,14 +72,14 @@ export const Values = () => {
             How I work
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-accent">
-            More than just
+            How I approach
             <span className="font-serif italic font-normal text-text-primary">
               {" "}
-              writing code.
+              every project.
             </span>
           </h2>
           <p className="text-text-secondary text-lg animate-fade-in animation-delay-200">
-            I believe good development comes from thoughtful decisions, clear communication and a willingness to keep learning along the way.
+            I like to understand a problem before I build, ask questions early and keep learning along the way.
           </p>
         </div>
 

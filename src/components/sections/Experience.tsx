@@ -2,11 +2,11 @@ import { Container } from "../shared/Container"
 
 const experiences = [
   {
-    period: "2025 — 2026",
+    period: "2025 - 2026",
     role: "Frontend developer",
     company: "Localazy",
     description:
-      "Designed, built and prototyped experimental landing pages and microsites with a focus on responsive design, performance and fast iteration. Worked with Directus as a headless CMS, maintained reusable components and used Claude Code as part of my development workflow.",
+      "Built landing pages and microsites with a focus on responsive design and speed. Used Directus as a headless CMS and kept a library of reusable components.",
     technologies: [
       "Vue",
       "Nuxt",
@@ -16,14 +16,14 @@ const experiences = [
       "Playwright",
       "Claude Code",
     ],
-    current: true,
+    current: false,
   },
   {
     period: "2025",
     role: "Frontend developer",
     company: "Develit.io",
     description:
-      "Contributed to web application development with a focus on UI implementation, responsive design and interactive prototypes. Helped establish the foundations of a design system and worked with reusable UI components.",
+      "Built web application interfaces and interactive prototypes, and helped lay the foundations of a design system with reusable components.",
     technologies: [
       "Vue 3",
       "Nuxt 3",
@@ -35,20 +35,11 @@ const experiences = [
     current: false,
   },
   {
-    period: "2025",
-    role: "Frontend developer",
-    company: "NAVISYS",
-    description:
-      "Worked in a SaaS development environment as part of an intensive onboarding process. Gained experience with the project's architecture, testing practices and established development workflow.",
-    technologies: ["Vue 3", "Nuxt", "Tailwind CSS", "Cypress"],
-    current: false,
-  },
-  {
-    period: "2021 — 2024",
+    period: "2021 - 2024",
     role: "Frontend developer",
     company: "NejŘemeslníci.cz",
     description:
-      "Developed a server-rendered web application with a component-based interface. Implemented responsive designs from Figma, built reusable components, managed feature flags and collaborated through pull requests and code reviews.",
+      "Built a component-based web application: responsive interfaces from Figma designs, reusable components, feature flags and code reviews.",
     technologies: [
       "Ruby on Rails",
       "Hotwire",
@@ -69,14 +60,14 @@ export const Experience = () => {
         <div className="max-w-3xl mb-16">
           <span className="text-navy text-sm font-medium tracking-wider uppercase animate-fade-in">Career journey</span>
           <h2 className="text-4xl md:text-5xl mt-4 mb-6 font-bold text-accent leading-tight animate-fade-in animation-delay-100">
-            Always learning,
+            From Rails to Nuxt,
             <span className="font-serif text-text-primary italic font-normal">
               {" "}
-              always building.
+              and now React.
             </span>
           </h2>
           <p className="text-text-secondary text-lg animate-fade-in animation-delay-200">
-            My path into front-end development has taken me from server-rendered applications with Ruby on Rails to modern Vue and Nuxt projects. Today, I'm continuing to expand my toolkit with React and Next.js while exploring new technologies and ways of working.
+            I started with server-rendered Rails applications and moved on to Vue and Nuxt. Now I'm adding React and Next.js.
           </p>
         </div>
 

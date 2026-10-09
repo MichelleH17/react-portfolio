@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Booking Website",
     description:
-      "A private booking platform for two family apartments in Nessebar, Bulgaria, built from scratch with Nuxt 4 and Tailwind CSS. It combines a responsive UI with a shared reservation calendar, role-based access, an admin panel, price calculation and email notifications.",
+      "A booking site for two family apartments in Bulgaria, with a shared calendar, automatic price calculation, email notifications and an admin panel.",
     image: "/projects/project3.png",
     tags: [
       "Vue",
@@ -23,7 +23,7 @@ const projects = [
   {
     title: "Localazy",
     description:
-      "Experimental landing pages and microsites built with Vue and Nuxt, focusing on responsive design, performance and fast iteration. I worked with Directus as a headless CMS, implemented typed data fetching and built reusable components for future projects.",
+      "Landing pages and microsites for Localazy, a localization platform, built with Nuxt and a headless CMS so the team can update content quickly.",
     image: "/projects/project2.png",
     tags: ["Vue", "Nuxt", "TypeScript", "Tailwind CSS", "Directus"],
     link: "https://localazy.com/",
@@ -31,7 +31,7 @@ const projects = [
   {
     title: "NejŘemeslníci.cz",
     description:
-      "A server-rendered web application where I implemented responsive interfaces from Figma designs and developed reusable components. I also worked with feature flags, continuous deployment and collaborative development through pull requests and code reviews.",
+      "A Czech web platform for finding tradespeople. I built responsive interfaces and reusable components from Figma designs.",
     image: "/projects/project1.png",
     tags: ["Ruby on Rails", "Hotwire", "Stimulus", "Tailwind CSS", "Figma"],
     link: "https://www.nejremeslnici.cz/",
@@ -60,14 +60,14 @@ export const Projects = () => {
             </span>
           </h2>
           <p className="text-text-secondary text-lg animate-fade-in animation-delay-200">
-            A selection of professional and personal projects, from web applications and responsive interfaces to landing pages and experiments. Along the way, I've also been exploring how AI tools like Claude Code can become a useful part of the development workflow.
+            A selection of professional and personal projects, from web applications to landing pages.
           </p>
         </div>
 
         {/* Projects */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
-            <div key={idx} className="group card rounded-2xl overflow-hidden animate-fade-in" style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
+            <div key={idx} className="group card rounded-2xl overflow-hidden animate-fade-in transition-[border-color,box-shadow] duration-300 hover:border-navy hover:shadow-lg" style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
               <div className="relative overflow-hidden m-6 rounded-2xl border border-border">
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 {/* Overlay links */}
