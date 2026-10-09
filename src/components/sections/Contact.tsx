@@ -98,20 +98,17 @@ export const Contact = () => {
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <span className="text-navy text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Get In Touch
+            Get in touch
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100">
-            Let's build{" "}
+            Have a project{" "}
             <span className="font-serif italic font-normal text-accent">
-              something together.
+              in mind?
             </span>
           </h2>
           <div className="text-text-secondary text-lg animate-fade-in animation-delay-200">
             <p>
-              I'm looking for my next opportunity in web development, with a strong focus on frontend. I'm open to full-time roles, collaborations and interesting projects and I'd be happy to contribute beyond frontend when it makes sense.
-            </p>
-            <p className="mt-2">
-              If you have something in mind, I'd love to hear from you.
+              I'm available for freelance projects: websites, frontend development and design work. Tell me what you have in mind and I'll get back to you.
             </p>
           </div>
         </div>  
@@ -232,10 +229,10 @@ export const Contact = () => {
             <div className="card rounded-3xl p-8">
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-3 h-3 bg-accent rounded-full animate-pulse" />
-                <span className="font-semibold text-lg text-text-primary">Open to new opportunities</span>
+                <span className="font-semibold text-lg text-text-primary">Available for freelance projects</span>
               </div>
               <p className="text-text-secondary text-sm">
-                I'm looking for my next opportunity where I can keep learning, contribute to meaningful projects and work with great people. My main focus is frontend development, but I'm also open to collaborations involving design, backend or other parts of web development.
+                Frontend is my main focus, but I can also help with web design, UX and other parts of a project.
               </p>
             </div>
           </div>

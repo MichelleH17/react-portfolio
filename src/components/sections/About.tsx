@@ -5,22 +5,22 @@ const highlights = [
   {
     icon: PanelsTopLeft,
     title: "Thoughtful UI",
-    description: "Turning designs into responsive, intuitive interfaces with attention to detail and a focus on user experience.",
+    description: "Turning designs into responsive, intuitive interfaces, with attention to detail.",
   },
   {
     icon: Code2,
     title: "Modern frontend",
-    description: "Building reusable and maintainable interfaces with Vue, Nuxt and TypeScript, while expanding my skills with React and Next.js.",
+    description: "Reusable, maintainable interfaces with Vue, Nuxt and TypeScript, and now React and Next.js.",
   },
   {
     icon: Users,
-    title: "Collaboration",
-    description: "Working closely with designers, product and marketing teams to turn ideas into polished, working experiences.",
+    title: "Clear communication",
+    description: "Working directly with clients and teams to turn ideas and designs into polished, working websites.",
   },
   {
     icon: Lightbulb,
     title: "Curious & experimental",
-    description: "Exploring new technologies and ideas, turning them into working prototypes and continuously expanding my skills.",
+    description: "Trying new technologies and turning ideas into working prototypes.",
   },
 ]
 
@@ -38,25 +38,22 @@ export const About = () => {
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-accent leading-tight animate-fade-in animation-delay-100">
-              Turning ideas into reality,
+              Clear design,
               <span className="font-serif text-text-primary italic font-normal">
                 {" "}
-                one component at a time.</span>
+                solid code.</span>
             </h2>
             <div className="space-y-4 text-text-secondary text-lg animate-fade-in animation-delay-200">
               <p>
-                I'm a creative front-end developer with over 4 years of professional experience building web applications and digital experiences. I enjoy taking ideas and turning them into responsive, functional and thoughtfully designed websites.
+                I'm a frontend developer with over 4 years of professional experience, building web applications and responsive websites that are easy to use and easy to maintain.
               </p>
               <p>
-                My main experience is with Vue and Nuxt, working with TypeScript, Tailwind CSS and reusable components. I'm also expanding my skills with React and Next.js through personal projects and exploring new ways to build for the web.
-              </p>
-              <p>
-                I enjoy collaborating with designers and product teams, experimenting with new technologies and finding simple solutions to interesting problems. I'm naturally curious and always looking for something new to learn.
+                My main tools are Vue, Nuxt and TypeScript with Tailwind CSS, and I'm adding React and Next.js. I'm also studying web design and UX, so I can think about how a site looks and feels, not only how it's built.
               </p>
             </div>
             <div className="card border-l-4 border-l-navy rounded-2xl p-6 animate-fade-in animation-delay-300">
               <p className="font-medium italic text-lg text-text-primary">
-                "I like building things that make sense - for the people using them and for the people maintaining them. And I'm always curious about what I could build next."
+                "I like building things that make sense, for the people who use them and the people who maintain them."
               </p>
             </div>
           </div>
@@ -64,7 +61,7 @@ export const About = () => {
           {/* Right column */}
           <div className="grid sm:grid-cols-2 gap-6">
             {highlights.map((item, idx) => (
-              <div key={idx} className="card p-6 rounded-2xl animate-fade-in" style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
+              <div key={idx} className="card p-6 rounded-2xl animate-fade-in transition-[border-color,box-shadow] duration-300 hover:border-navy hover:shadow-lg" style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
                 <div className="w-12 h-12 rounded-xl bg-accent-soft flex items-center justify-center mb-4">
                   <item.icon className="w-6 h-6 text-accent" />
                 </div>
