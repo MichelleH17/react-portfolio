@@ -29,7 +29,7 @@ export const Hero = () => {
       <Container className="pt-32 pb-12 md:pb-20 relative z-10">        
 
         {/* Content */}
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] xl:grid-cols-[1.3fr_0.7fr] gap-12 items-center">
 
           {/* Left column - text */}
           <div className="space-y-8">
@@ -41,20 +41,22 @@ export const Hero = () => {
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl leading-tight">
-                <span className="word-mask"><span style={{ animationDelay: "200ms" }}>Hi,</span></span>{" "}
-                <span className="word-mask"><span style={{ animationDelay: "300ms" }}>I'm</span></span>{" "}
-                <span className="word-mask"><span className="text-accent font-bold" style={{ animationDelay: "400ms" }}>Michaela.</span></span>
+              <h1 className="text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-tight">
+                <span className="block">
+                  <span className="word-mask"><span style={{ animationDelay: "200ms" }}>Hi,</span></span>{" "}
+                  <span className="word-mask"><span style={{ animationDelay: "300ms" }}>I'm</span></span>{" "}
+                  <span className="word-mask"><span className="text-accent font-bold" style={{ animationDelay: "400ms" }}>Michaela,</span></span>
+                </span>
+                <span className="flex flex-wrap items-center gap-x-[0.3em]">
+                  <span className="sr-only">building with {words.join(", ")}</span>
+                  <span className="word-mask" aria-hidden="true"><span style={{ animationDelay: "550ms" }}>building with</span></span>
+                  <span className="inline-block h-[1.4em] overflow-hidden text-navy font-bold animate-fade-in animation-delay-600" aria-hidden="true">
+                    <span className="animate-roll flex flex-col leading-[1.4]">
+                      {[...words, words[0]].map((w, i) => <span key={i}>{w}.</span>)}
+                    </span>
+                  </span>
+                </span>
               </h1>
-              <div className="flex items-center gap-3 text-2xl md:text-3xl animate-fade-in animation-delay-600">
-                <span className="sr-only">building with {words.join(", ")}</span>
-                <span className="text-text-secondary" aria-hidden="true">building with</span>
-                <div className="h-[1.4em] overflow-hidden text-navy font-bold" aria-hidden="true">
-                  <div className="animate-roll leading-[1.4]">
-                    {[...words, words[0]].map((w, i) => <div key={i}>{w}</div>)}
-                  </div>
-                </div>
-              </div>
               <div className="max-w-lg text-text-secondary text-lg animate-fade-in animation-delay-200">
                 <p>
                   I'm a frontend developer with 4+ years of experience, working with Vue, Nuxt and TypeScript and currently adding React and Next.js. I build fast, clean websites and interfaces that are a pleasure to use.
