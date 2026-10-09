@@ -171,6 +171,18 @@
     .animate-ping {
       animation: none !important;
     }
+
+    /* No scrolling: show every technology, wrapped, once. */
+    .animate-marquee {
+      width: auto !important;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .marquee-dup,
+    .marquee-fade {
+      display: none;
+    }
   }
 
   .loop-paused {

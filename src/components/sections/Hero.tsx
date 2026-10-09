@@ -104,7 +104,7 @@ export const Hero = () => {
               </svg>
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-soft via-transparent to-blue-soft blur-2xl opacity-60 animate-pulse" />
               <div className="relative">
-                <img src="/michaela-photo.jpg" alt="Michaela Havlíková image" className="w-full aspect-square object-cover rounded-full border border-border animate-reveal" />
+                <img src="/michaela-photo.jpg" alt="Portrait of Michaela Havlíková" className="w-full aspect-square object-cover rounded-full border border-border animate-reveal" />
 
               </div>
             </div>
@@ -118,14 +118,14 @@ export const Hero = () => {
             </p>
             <div className="relative overflow-hidden">
               <div
-                className="absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-bg to-transparent z-10"
+                className="marquee-fade absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-bg to-transparent z-10"
               />
               <div
-                className="absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-bg to-transparent z-10"
+                className="marquee-fade absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-bg to-transparent z-10"
               />
               <div className="flex w-max animate-marquee will-change-transform">
                 {[...skills, ...skills].map((skill, idx) => (
-                  <div key={idx} className="flex-shrink-0 px-5 sm:px-8 py-4 animate-fade-in" style={{ animationDelay: `${800 + (idx % skills.length) * 60}ms` }}>
+                  <div key={idx} aria-hidden={idx >= skills.length || undefined} className={`flex-shrink-0 px-5 sm:px-8 py-4 animate-fade-in ${idx >= skills.length ? "marquee-dup" : ""}`} style={{ animationDelay: `${800 + (idx % skills.length) * 60}ms` }}>
                     <span className="text-lg sm:text-xl font-semibold text-text-secondary hover:text-accent transition-colors">{skill}</span>
                   </div>
                 ))}
