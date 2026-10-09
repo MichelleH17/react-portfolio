@@ -85,18 +85,96 @@
     animation: fade-in 0.5s ease-out both;
   }
 
+  .reveal-pending {
+    animation-play-state: paused;
+  }
+
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
 
   .animate-marquee {
-    animation: marquee 16s linear infinite;
+    animation: marquee 49s linear infinite;
   }
 
   @media (max-width: 640px) {
     .animate-marquee {
-      animation-duration: 8s;
+      animation-duration: 38s;
     }
+  }
+
+  @keyframes rise {
+    from { transform: translateY(110%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes reveal {
+    from { clip-path: inset(100% 0 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+
+  /* 5 rows of 1.4em: Vue, Nuxt, React, TypeScript, Vue (loop point) */
+  @keyframes roll {
+    0%, 22% { transform: translateY(0); }
+    25%, 47% { transform: translateY(-1.4em); }
+    50%, 72% { transform: translateY(-2.8em); }
+    75%, 97% { transform: translateY(-4.2em); }
+    100% { transform: translateY(-5.6em); }
+  }
+
+  .word-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.08em;
+  }
+
+  .word-mask > span {
+    display: inline-block;
+    animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .animate-reveal {
+    animation: reveal 1.2s cubic-bezier(0.7, 0, 0.2, 1) 0.3s both;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 22s linear infinite;
+  }
+
+  @media (min-width: 640px) {
+    .animate-spin-slow {
+      animation-duration: 32s;
+    }
+  }
+
+  .animate-roll {
+    animation: roll 8s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word-mask > span,
+    .animate-reveal,
+    .animate-spin-slow,
+    .animate-roll,
+    .animate-fade-in,
+    .animate-float {
+      animation: none;
+    }
+
+    .animate-marquee,
+    .animate-pulse,
+    .animate-ping {
+      animation: none !important;
+    }
+  }
+
+  .loop-paused {
+    animation-play-state: paused;
   }
 
   .animation-delay-100 {
