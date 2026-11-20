@@ -1,22 +1,35 @@
-import { Layout } from "./components/Layout"
-import { About } from "./components/sections/About"
-import { Contact } from "./components/sections/Contact"
-import { Experience } from "./components/sections/Experience"
-import { Hero } from "./components/sections/Hero"
-import { Projects } from "./components/sections/Projects"
-import { Values } from "./components/sections/Values"
+import type { Lang } from "./content/types"
+import { LangContext, content } from "./i18n"
+import { Navbar } from "./components/layout/Navbar"
+import { BackToTop, Footer } from "./components/layout/Footer"
 
-
-function App() {
+function App({ lang }: { lang: Lang }) {
+  const t = content[lang]
+  // ponytail: phase 2 placeholders so nav links, scroll margins and back-to-top can be checked; phases 3–5 replace them.
+  const stubs = [
+    { id: "services", title: t.services.title, band: true },
+    { id: "work", title: t.projects.title, band: false },
+    { id: "about", title: t.about.title, band: true },
+    { id: "contact", title: t.contact.title, band: false },
+  ]
   return (
-    <Layout title="Michaela Havlíková | Frontend developer & web designer">
-      <Hero />
-      <About />
-      <Projects />
-      <Experience />
-      <Values />
-      <Contact />
-    </Layout>
+    <LangContext value={lang}>
+      <Navbar />
+      <main id="main" tabIndex={-1} className="outline-none">
+        <section id="top" className="wrap flex min-h-[70vh] items-center py-16">
+          <h1 className="text-h1 max-w-[16ch]">{t.hero.title}</h1>
+        </section>
+        {stubs.map((s) => (
+          <section key={s.id} id={s.id} className={`min-h-[90vh] py-26 max-[860px]:py-16 ${s.band ? "bg-band" : ""}`}>
+            <div className="wrap">
+              <h2 className="text-h2">{s.title}</h2>
+            </div>
+          </section>
+        ))}
+      </main>
+      <BackToTop />
+      <Footer />
+    </LangContext>
   )
 }
 
