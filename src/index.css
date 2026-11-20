@@ -273,6 +273,7 @@
   .skip {
     position: absolute;
     left: 16px;
+    width: auto;
     top: -100px;
     z-index: 100;
   }
@@ -529,5 +530,411 @@
   .btn,
   .totop {
     transition: none;
+  }
+}
+
+.hero-title .rollwrap {
+  display: block;
+  height: 1.1em;
+  overflow: hidden;
+}
+.roll {
+  display: flex;
+  flex-direction: column;
+}
+.roll > span {
+  display: block;
+  height: 1.1em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.hero-title .w {
+  display: inline-block;
+}
+.hero-title .rollwrap.w {
+  display: block;
+}
+
+.dash {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dash li {
+  position: relative;
+  padding-left: 22px;
+}
+.dash li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 10px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+.tab {
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.18s ease;
+}
+.tab:hover {
+  transform: translateY(-2px);
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-top: 56px;
+}
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+.diagram {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin: 0;
+  padding: 48px 40px;
+  list-style: none;
+}
+.node {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: 18px;
+  font-weight: 600;
+  transition: transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.diagram li:hover .node {
+  transform: scale(1.12);
+}
+.rail {
+  position: absolute;
+  left: 62px;
+  right: calc((100% - 176px) / 4 + 18px);
+  top: 69px;
+  height: 2px;
+  background: var(--color-lichen);
+}
+.after {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 20px 40px;
+  border-top: 1px dashed var(--color-lichen);
+  color: var(--color-body);
+}
+.after-dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px dashed var(--color-accent);
+}
+@media (max-width: 1000px) {
+  .diagram {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rail {
+    display: none;
+  }
+}
+@media (max-width: 860px) {
+  .diagram {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 32px 24px;
+  }
+  .after {
+    align-items: flex-start;
+    padding: 20px 24px;
+  }
+  .after-dot {
+    margin-top: 6px;
+  }
+}
+
+.price-card {
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.25s ease;
+}
+.price-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-card-hover);
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 28px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tool {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  border-radius: 10px;
+  outline: none;
+}
+.tool:hover,
+.tool:focus-visible {
+  background: var(--color-bg);
+}
+.tool:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+.tool img {
+  height: 36px;
+  width: auto;
+  max-width: 96px;
+  transition: transform 0.2s ease;
+}
+.tool:hover img {
+  transform: translateY(-2px);
+}
+.tool .name {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  z-index: 2;
+  padding: 8px 12px;
+  border-radius: var(--radius-btn);
+  background: var(--color-ink);
+  color: var(--color-bg);
+  font-size: var(--text-tip);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.tool:hover .name,
+.tool:focus .name {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (max-width: 1000px) {
+  .tools {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .tools {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.jobs {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 16px 0 0;
+  padding: 0 0 0 36px;
+  list-style: none;
+}
+.jobs::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: var(--color-lichen);
+  transform-origin: top;
+}
+.jobs li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.jobs .dot {
+  position: absolute;
+  left: -36px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-band);
+}
+@media (max-width: 860px) {
+  .jobs {
+    gap: 32px;
+    padding-left: 30px;
+  }
+  .jobs .dot {
+    left: -30px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .jobs {
+      view-timeline: --jobs block;
+    }
+    .jobs::before {
+      animation: growy linear both;
+      animation-timeline: --jobs;
+      animation-range: cover 10% cover 50%;
+    }
+    .jobs .dot {
+      animation: pop linear both;
+      animation-timeline: --jobs;
+      animation-range: cover 8% cover 15%;
+    }
+    .jobs li > :not(.dot) {
+      animation: fade linear both;
+      animation-timeline: --jobs;
+      animation-range: cover 10% cover 20%;
+    }
+    .jobs li:nth-child(2) .dot {
+      animation-range: cover 22% cover 29%;
+    }
+    .jobs li:nth-child(2) > :not(.dot) {
+      animation-range: cover 24% cover 34%;
+    }
+    .jobs li:nth-child(3) .dot {
+      animation-range: cover 36% cover 43%;
+    }
+    .jobs li:nth-child(3) > :not(.dot) {
+      animation-range: cover 38% cover 48%;
+    }
+  }
+}
+@keyframes growy {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+  }
+  70% {
+    opacity: 1;
+    scale: 1.12;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title .w {
+    animation: enter 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i) * 45ms);
+  }
+  .roll {
+    animation: roll2 7s cubic-bezier(0.7, 0, 0.2, 1) 1.4s infinite;
+  }
+  .enter {
+    animation: enter 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .develop {
+    animation: develop 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .iris {
+    animation: iris 0.8s cubic-bezier(0.65, 0, 0.35, 1) both;
+  }
+  .hero-ring {
+    animation: ringin 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both, spin 32s linear 1.1s infinite;
+  }
+  .panel {
+    animation: panel 0.35s ease both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .price-card,
+  .node,
+  .tool img,
+  .tool .name {
+    transition: none;
+  }
+  .tab:hover,
+  .price-card:hover {
+    transform: none;
+  }
+}
+@keyframes enter {
+  from {
+    opacity: 0.01;
+    transform: translateY(14px);
+  }
+}
+@keyframes roll2 {
+  0%,
+  42% {
+    translate: 0 0;
+  }
+  50%,
+  92% {
+    translate: 0 -1.1em;
+  }
+  100% {
+    translate: 0 -2.2em;
+  }
+}
+@keyframes develop {
+  0% {
+    filter: grayscale(1) contrast(0.55) brightness(1.25);
+    transform: scale(1.04);
+  }
+  55% {
+    filter: grayscale(0.6) contrast(0.9) brightness(1.05);
+  }
+}
+@keyframes iris {
+  from {
+    clip-path: circle(32% at 50% 50%);
+  }
+  to {
+    clip-path: circle(50% at 50% 50%);
+  }
+}
+@keyframes ringin {
+  from {
+    opacity: 0;
+    rotate: -90deg;
+    scale: 0.9;
+  }
+}
+@keyframes panel {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 }

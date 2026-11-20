@@ -24,7 +24,7 @@ export const cs: Content = nbsp({
   },
   hero: {
     title: "Webdesign a~vývoj pro malé firmy a~produktové týmy",
-    titleStart: "Webdesign a~vývoj pro",
+    titleStart: "Webdesign a~vývoj~pro",
     roll: ["malé firmy", "produktové týmy"],
     leads: [
       "Jmenuji se Michaela a~malým firmám stavím kompletní weby od návrhu až po spuštění. Jako frontend vývojářka pracuji také v~produktových týmech firem.",
