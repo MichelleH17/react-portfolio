@@ -1025,3 +1025,61 @@
     translate: 0 32px;
   }
 }
+
+.frame img {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.3s ease;
+}
+.frame:hover img {
+  transform: scale(1.025);
+}
+.frame.wip img {
+  opacity: 0.45;
+}
+.frame.wip:hover img {
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .frame img {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .frame img {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+    .wh {
+      view-timeline: --wh block;
+    }
+    .wh span {
+      animation: wh linear both;
+      animation-timeline: --wh;
+      animation-range: cover calc(10% + var(--i) * 2.1%) cover calc(16% + var(--i) * 2.1%);
+    }
+    .wh span.a {
+      background: linear-gradient(currentColor, currentColor) 0 92% / 0 3px no-repeat;
+      animation-name: wh, line;
+      animation-range:
+        cover calc(10% + var(--i) * 2.1%) cover calc(16% + var(--i) * 2.1%),
+        cover 40% cover 50%;
+    }
+  }
+}
+@keyframes settle {
+  from {
+    scale: 1.1;
+  }
+}
+@keyframes wh {
+  from {
+    color: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+}
+@keyframes line {
+  to {
+    background-size: 100% 3px;
+  }
+}
