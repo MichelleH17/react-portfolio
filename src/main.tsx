@@ -11,6 +11,5 @@ const app = (
   </StrictMode>
 )
 
-// Built pages come prerendered (scripts/prerender.mjs), dev starts empty.
 if (root.firstElementChild) hydrateRoot(root, app)
 else createRoot(root).render(app)

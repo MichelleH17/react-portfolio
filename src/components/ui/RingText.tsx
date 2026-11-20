@@ -3,7 +3,6 @@ import { useId } from "react"
 type Props = {
   text: string
   className?: string
-  // Geometry from the V9 design: the small nav logo and the big ring around the portrait.
   variant: "logo" | "portrait"
 }
 
@@ -12,7 +11,6 @@ const shapes = {
   portrait: { box: 200, r: 91, fontSize: 8, fontWeight: 500, letterSpacing: 2, textLength: 566 },
 }
 
-// Text running round a circle. Decorative: the same words are on the page elsewhere.
 export function RingText({ text, className, variant }: Props) {
   const id = useId()
   const { box, r, ...type } = shapes[variant]

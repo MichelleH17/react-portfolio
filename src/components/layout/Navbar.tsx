@@ -1,7 +1,7 @@
 import { useRef, useState, type MouseEvent } from "react"
 import { useContent } from "@/i18n"
 import { RingText } from "../ui/RingText"
-import { CloseIcon, MenuIcon } from "../ui/icons"
+import { Menu, X } from "lucide-react"
 import { LangSwitch, Name, ThemeToggle } from "./Controls"
 
 const RING_TEXT = "FRONTEND • WEB DESIGN •"
@@ -22,20 +22,22 @@ export function Navbar() {
     setOpen(true)
   }
 
-  // Close first, then scroll: jumping while the menu was still open left headings tucked under the nav on iPad.
   const goTo = (e: MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute("href")!
     e.preventDefault()
     menu.current?.close()
     requestAnimationFrame(() => {
-      if (href === "#") window.scrollTo({ top: 0 })
-      else document.querySelector(href)?.scrollIntoView()
-      history.replaceState(null, "", href)
+      history.pushState(null, "", href)
+      const target = href === "#" ? null : document.querySelector<HTMLElement>(href)
+      if (!target) return window.scrollTo({ top: 0 })
+      target.tabIndex = -1
+      target.focus({ preventScroll: true })
+      target.scrollIntoView()
     })
   }
 
-  // A click on the drawer's backdrop lands on the dialog itself, outside its box.
   const onDialogClick = (e: MouseEvent<HTMLDialogElement>) => {
+    if (e.target !== e.currentTarget) return
     const box = e.currentTarget.getBoundingClientRect()
     const outside = e.clientX < box.left || e.clientX > box.right || e.clientY < box.top || e.clientY > box.bottom
     if (outside) menu.current?.close()
@@ -66,7 +68,7 @@ export function Navbar() {
               {t.nav.cta}
             </a>
             <button type="button" className="icon-btn menu-btn" aria-label={t.nav.openMenu} aria-expanded={open} onClick={openMenu}>
-              <MenuIcon />
+              <Menu size={20} />
             </button>
           </div>
         </header>
@@ -79,10 +81,10 @@ export function Navbar() {
             <Name />
           </a>
           <button type="button" className="icon-btn" aria-label={t.nav.closeMenu} onClick={() => menu.current?.close()}>
-            <CloseIcon />
+            <X size={20} />
           </button>
         </div>
-        <nav className="mm-links flex flex-col pt-6" aria-label={t.nav.menu}>
+        <nav className="mm-links flex flex-col pt-6" aria-label={t.nav.label}>
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={goTo}>
               {l.label}

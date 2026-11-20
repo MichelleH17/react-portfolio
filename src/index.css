@@ -3,7 +3,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* V9 tokens. Dark mode overrides the same variables under .dark. */
 @theme {
   --font-sans: "Hanken Grotesk Variable", system-ui, sans-serif;
 
@@ -31,7 +30,6 @@
   --color-error-line: #f0c4c0;
   --color-error-text: #7a1d16;
 
-  /* Fluid sizes: min at 390px, max at 1440px */
   --text-h1: clamp(40px, 29.6px + 2.667vw, 68px);
   --text-h1--line-height: 1.02;
   --text-h1--letter-spacing: -0.04em;
@@ -63,9 +61,9 @@
   --text-role: 17px;
   --text-base: clamp(17px, 16.63px + 0.095vw, 18px);
   --text-base--line-height: 1.6;
-  --text-meta: clamp(15px, 14.63px + 0.095vw, 16px);
-  --text-tag: 14px;
-  --text-tip: 13px;
+  --text-meta: 17px;
+  --text-tag: 17px;
+  --text-tip: 17px;
 
   --radius-card: 20px;
   --radius-box: 12px;
@@ -125,6 +123,9 @@
   section[id] {
     scroll-margin-top: 76px;
   }
+  section[id]:focus {
+    outline: none;
+  }
   @media (max-width: 1000px) {
     section[id] {
       scroll-margin-top: 100px;
@@ -148,7 +149,6 @@
   }
 }
 
-/* ---------- shared pieces (V9) ---------- */
 @layer components {
   .wrap {
     box-sizing: border-box;
@@ -175,7 +175,7 @@
     background: var(--color-accent);
     color: var(--color-on-accent);
     font: inherit;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
@@ -206,7 +206,6 @@
     }
   }
 
-  /* Text link: green, underline draws on hover */
   .tl {
     color: var(--color-accent);
     font-weight: 500;
@@ -242,7 +241,7 @@
     border: 1px solid var(--color-line);
     border-radius: var(--radius-btn);
     background: var(--color-band);
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 500;
   }
   .lang a {
@@ -264,6 +263,11 @@
 
   .ring-spin {
     animation: spin 32s linear infinite;
+    animation-play-state: paused;
+  }
+  :hover > .ring-spin,
+  :focus-visible > .ring-spin {
+    animation-play-state: running;
   }
 
   .skip {
@@ -277,7 +281,6 @@
   }
 }
 
-/* ---------- navigation ---------- */
 .navbar {
   position: sticky;
   top: 0;
@@ -389,7 +392,6 @@
   }
 }
 
-/* ---------- mobile menu: full screen up to 600px, drawer from 601px ---------- */
 .mmenu {
   position: fixed;
   inset: 0;
@@ -455,7 +457,6 @@
   }
 }
 
-/* ---------- back to top: aligned with the content edge, a third up the screen ---------- */
 .totop {
   position: fixed;
   right: max(40px, calc((100vw - 1200px) / 2 + 40px));
@@ -484,7 +485,6 @@
     right: 20px;
   }
 }
-/* ponytail: without scroll timelines (Firefox today) the button is simply always visible */
 @supports (animation-timeline: scroll()) {
   .totop {
     animation: totop linear both;

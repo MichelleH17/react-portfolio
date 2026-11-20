@@ -1,5 +1,6 @@
 import { EMAIL, useContent } from "@/i18n"
-import { ArrowUpIcon, GitHubIcon, LinkedInIcon, MailIcon } from "../ui/icons"
+import { ArrowUp, Mail } from "lucide-react"
+import { LuGithub, LuLinkedin } from "react-icons/lu"
 
 export function Footer() {
   const t = useContent()
@@ -20,13 +21,13 @@ export function Footer() {
             </a>
             <div className="flex gap-3">
               <a className="social" href="https://github.com/MichelleH17" aria-label="GitHub">
-                <GitHubIcon />
+                <LuGithub size={20} aria-hidden="true" />
               </a>
               <a className="social" href={`mailto:${EMAIL}`} aria-label={t.footer.emailLabel}>
-                <MailIcon />
+                <Mail size={20} />
               </a>
               <a className="social" href="https://www.linkedin.com/in/michaela-havlikova/" aria-label="LinkedIn">
-                <LinkedInIcon />
+                <LuLinkedin size={20} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -36,12 +37,11 @@ export function Footer() {
   )
 }
 
-// Goes to the very top of the page (not the hero section), so the headline never sits under the sticky nav.
 export function BackToTop() {
   const t = useContent()
   return (
     <a className="totop" href="#" aria-label={t.backToTop}>
-      <ArrowUpIcon />
+      <ArrowUp size={20} strokeWidth={2.25} />
     </a>
   )
 }

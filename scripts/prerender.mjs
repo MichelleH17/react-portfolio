@@ -1,5 +1,3 @@
-// After `vite build` + the SSR build: writes dist/index.html (cs) and dist/en/index.html (en)
-// with the rendered page and per-language head tags.
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 
 const SITE = "https://michaela-havlikova.vercel.app"
@@ -23,11 +21,11 @@ for (const lang of ["cs", "en"]) {
   ].join("\n    ")
 
   const html = template
-    .replace(/<html lang="[^"]*">/, `<html lang="${lang}">`)
-    .replace(/<title>.*<\/title>/, `<title>${esc(meta.title)}</title>`)
-    .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(meta.description)}" />`)
-    .replace("<!--app-head-->", head)
-    .replace("<!--app-html-->", render(lang))
+    .replace(/<html lang="[^"]*">/, () => `<html lang="${lang}">`)
+    .replace(/<title>.*<\/title>/, () => `<title>${esc(meta.title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*" \/>/, () => `<meta name="description" content="${esc(meta.description)}" />`)
+    .replace("<!--app-head-->", () => head)
+    .replace("<!--app-html-->", () => render(lang))
 
   const out = lang === "cs" ? "dist/index.html" : "dist/en/index.html"
   mkdirSync(out.replace(/\/[^/]+$/, ""), { recursive: true })

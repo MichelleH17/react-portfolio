@@ -5,7 +5,6 @@ import { BackToTop, Footer } from "./components/layout/Footer"
 
 function App({ lang }: { lang: Lang }) {
   const t = content[lang]
-  // ponytail: phase 2 placeholders so nav links, scroll margins and back-to-top can be checked; phases 3–5 replace them.
   const stubs = [
     { id: "services", title: t.services.title, band: true },
     { id: "work", title: t.projects.title, band: false },

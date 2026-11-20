@@ -3,7 +3,6 @@ export type SiteKind = "unsure" | "one" | "multi" | "redesign"
 
 type Link = { label: string; href: string }
 
-// Every text on the page. cs.ts and en.ts must both fill all of it.
 export interface Content {
   meta: { title: string; description: string; ogLocale: string }
   nav: {
@@ -22,8 +21,8 @@ export interface Content {
     themeToLight: string
   }
   hero: {
-    title: string // full sentence for screen readers
-    titleStart: string // words before the rolling part
+    title: string
+    titleStart: string
     roll: [string, string]
     leads: string[]
     ctaPrimary: string
@@ -111,7 +110,6 @@ export interface Content {
   backToTop: string
 }
 
-// "~" in content means a non-breaking space (after one-letter words, inside prices).
 export function nbsp<T>(value: T): T {
   if (typeof value === "string") return value.replaceAll("~", " ") as T
   if (Array.isArray(value)) return value.map(nbsp) as T

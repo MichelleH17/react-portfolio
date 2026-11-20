@@ -8,7 +8,6 @@
     <meta name="description" content="" />
     <!--app-head-->
     <script>
-      // Set the theme before first paint so dark mode doesn't flash.
       try {
         var t = JSON.parse(localStorage.getItem("app-theme") || "{}").state?.theme
         if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches))
