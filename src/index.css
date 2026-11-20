@@ -121,14 +121,14 @@
     text-wrap: pretty;
   }
   section[id] {
-    scroll-margin-top: 76px;
+    scroll-margin-top: 12px;
   }
   section[id]:focus {
     outline: none;
   }
-  @media (max-width: 1000px) {
+  @media (max-width: 860px) {
     section[id] {
-      scroll-margin-top: 100px;
+      scroll-margin-top: 52px;
     }
   }
   a {
@@ -283,8 +283,10 @@
 }
 
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   background: var(--color-bg);
   border-bottom: 1px solid transparent;
@@ -936,5 +938,90 @@
   from {
     opacity: 0;
     transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .rise,
+    .intro > *,
+    .price-card {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+    .intro > :nth-child(2) {
+      animation-range: entry 10% entry 65%;
+    }
+    .price-card {
+      animation-range: entry 0% entry 45%;
+    }
+    .price-card:nth-child(2) {
+      animation-range: entry 8% entry 53%;
+    }
+    .price-card:nth-child(3) {
+      animation-range: entry 16% entry 61%;
+    }
+
+    .steps {
+      view-timeline: --steps block;
+    }
+    .rail {
+      transform-origin: left;
+      animation: grow linear both;
+      animation-timeline: --steps;
+      animation-range: cover 15% cover 45%;
+    }
+    .diagram .node {
+      animation: pop linear both;
+      animation-timeline: --steps;
+      animation-range: cover 12% cover 19%;
+    }
+    .diagram li > :not(.node) {
+      animation: fade linear both;
+      animation-timeline: --steps;
+      animation-range: cover 15% cover 25%;
+    }
+    .diagram li:nth-child(2) .node {
+      animation-range: cover 22% cover 29%;
+    }
+    .diagram li:nth-child(2) > :not(.node) {
+      animation-range: cover 25% cover 35%;
+    }
+    .diagram li:nth-child(3) .node {
+      animation-range: cover 32% cover 39%;
+    }
+    .diagram li:nth-child(3) > :not(.node) {
+      animation-range: cover 35% cover 45%;
+    }
+    .diagram li:nth-child(4) .node {
+      animation-range: cover 42% cover 49%;
+    }
+    .diagram li:nth-child(4) > :not(.node) {
+      animation-range: cover 45% cover 55%;
+    }
+    .after {
+      animation: fade linear both;
+      animation-timeline: --steps;
+      animation-range: cover 50% cover 60%;
+    }
+
+    .tools {
+      view-timeline: --tools block;
+    }
+    .tools .tool {
+      animation: pop linear both;
+      animation-timeline: --tools;
+      animation-range: entry 10% cover 30%;
+    }
+    .tools .tool:nth-child(even) {
+      animation-range: entry 30% cover 40%;
+    }
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 32px;
   }
 }

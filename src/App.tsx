@@ -15,7 +15,7 @@ function App({ lang }: { lang: Lang }) {
   return (
     <LangContext value={lang}>
       <Navbar />
-      <main id="main" tabIndex={-1} className="outline-none">
+      <main id="main" tabIndex={-1} className="pt-[88px] outline-none max-[860px]:pt-[72px]">
         <Hero />
         <Services />
         {stubs.map((s) => (

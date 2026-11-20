@@ -28,8 +28,8 @@ export function Services() {
     <section id="services" className="bg-band py-26 max-[860px]:py-16">
       <div className="wrap">
         <div className="mb-10 flex flex-col gap-4">
-          <h2 className="text-h2 font-normal">{t.services.title}</h2>
-          <p className="text-lead max-w-[600px] text-body">{t.services.lead}</p>
+          <h2 className="rise text-h2 font-normal">{t.services.title}</h2>
+          <p className="rise text-lead max-w-[600px] text-body">{t.services.lead}</p>
         </div>
         <div role="tablist" aria-label={t.services.tabsLabel} className="grid grid-cols-2 gap-5 max-[860px]:grid-cols-1 max-[860px]:gap-4">
           {order.map((p) => {

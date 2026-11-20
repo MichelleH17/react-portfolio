@@ -16,8 +16,8 @@ function Process() {
   return (
     <div id="process" className="flex flex-col gap-8">
       <div className="flex flex-col gap-3">
-        <h3 className="text-subhead font-normal">{process.title}</h3>
-        <p className="text-lead max-w-[600px] text-body">{process.lead}</p>
+        <h3 className="rise text-subhead font-normal">{process.title}</h3>
+        <p className="rise text-lead max-w-[600px] text-body">{process.lead}</p>
       </div>
       <div className="steps relative rounded-card border border-line bg-band">
         <span className="rail" aria-hidden="true" />
@@ -47,8 +47,8 @@ function Prices() {
   return (
     <div id="prices" className="flex flex-col gap-8">
       <div className="flex flex-col gap-3">
-        <h3 className="text-subhead font-normal">{prices.title}</h3>
-        <p className="text-lead max-w-[600px] text-body">{prices.lead}</p>
+        <h3 className="rise text-subhead font-normal">{prices.title}</h3>
+        <p className="rise text-lead max-w-[600px] text-body">{prices.lead}</p>
       </div>
       <div className="grid grid-cols-3 gap-6 max-[1000px]:grid-cols-1">
         {prices.plans.map((plan, i) => (
@@ -67,7 +67,7 @@ function Prices() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-3.5 rounded-card border border-line bg-bg p-8 max-[600px]:p-6">
+      <div className="rise flex flex-col gap-3.5 rounded-card border border-line bg-bg p-8 max-[600px]:p-6">
         <h4 className="text-box font-medium">{prices.includedTitle}</h4>
         <DashList
           items={prices.included}
@@ -75,7 +75,7 @@ function Prices() {
         />
       </div>
       <div className="grid grid-cols-2 gap-6 max-[600px]:grid-cols-1">
-        <div className="flex flex-col gap-3.5 rounded-card bg-sage p-8 text-on-sage max-[600px]:p-6">
+        <div className="rise flex flex-col gap-3.5 rounded-card bg-sage p-8 text-on-sage max-[600px]:p-6">
           <h4 className="text-box font-medium text-ink">{prices.care.title}</h4>
           <ul className="dash">
             {prices.care.items.map((item) => (
@@ -85,7 +85,7 @@ function Prices() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-3.5 rounded-card border border-line bg-bg p-8 text-body max-[600px]:p-6">
+        <div className="rise flex flex-col gap-3.5 rounded-card border border-line bg-bg p-8 text-body max-[600px]:p-6">
           <h4 className="text-box font-medium text-ink">{prices.notIncluded.title}</h4>
           <DashList items={prices.notIncluded.items} />
           <p className="text-meta text-muted">{prices.notIncluded.vat}</p>
