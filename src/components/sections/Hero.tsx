@@ -50,14 +50,17 @@ export function Hero() {
         <div className="relative aspect-square w-[500px] overflow-hidden max-w-full justify-self-end max-[1000px]:justify-self-center">
           <RingText variant="portrait" text={RING_TEXT} className="hero-ring absolute inset-0 size-full text-lake" />
           <div className="iris absolute inset-[11%] overflow-hidden rounded-full">
-            <img
-              className="develop block size-full object-cover"
-              src="/michaela-photo.jpg"
-              alt={t.hero.portraitAlt}
-              width={512}
-              height={512}
-              fetchPriority="high"
-            />
+            <picture>
+              <source srcSet="/michaela-photo.webp" type="image/webp" />
+              <img
+                className="develop block size-full object-cover"
+                src="/michaela-photo.jpg"
+                alt={t.hero.portraitAlt}
+                width={1000}
+                height={1000}
+                fetchPriority="high"
+              />
+            </picture>
           </div>
         </div>
       </div>

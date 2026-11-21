@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="border-t border-line bg-band pt-16 pb-7">
       <div className="wrap flex flex-col gap-12">
         <div className="flex flex-wrap items-center justify-between gap-8">
-          <h2 className="max-w-[800px] flex-[1_1_560px] text-subhead leading-[1.15]">{t.footer.title}</h2>
+          <h2 className="rise max-w-[800px] flex-[1_1_560px] text-subhead leading-[1.15]">{t.footer.title}</h2>
           <a className="btn min-h-14! px-8! text-[18px]!" href="#contact">
             {t.footer.cta}
           </a>

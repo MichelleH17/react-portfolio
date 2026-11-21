@@ -17,9 +17,15 @@ export function Services() {
   const tabs = useRef<Partial<Record<EnquiryPath, HTMLButtonElement | null>>>({})
 
   const onKey = (e: KeyboardEvent) => {
-    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return
+    const keys: Record<string, EnquiryPath> = {
+      ArrowLeft: order.find((p) => p !== path)!,
+      ArrowRight: order.find((p) => p !== path)!,
+      Home: order[0],
+      End: order[order.length - 1],
+    }
+    const next = keys[e.key]
+    if (!next) return
     e.preventDefault()
-    const next = order.find((p) => p !== path)!
     setPath(next)
     tabs.current[next]?.focus()
   }

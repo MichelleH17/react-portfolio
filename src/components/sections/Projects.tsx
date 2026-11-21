@@ -1,6 +1,6 @@
 import { useContent } from "@/i18n"
 
-const images = ["/projects/project3.png", "/projects/project2.png", "/projects/project1.png"]
+const images = ["/projects/project3.webp", "/projects/project2.png", "/projects/project1.webp"]
 
 export function Projects() {
   const t = useContent().projects

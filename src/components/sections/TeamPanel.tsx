@@ -35,7 +35,7 @@ export function TeamPanel() {
         <h3 className="text-box font-medium">{t.toolsTitle}</h3>
         <ul className="tools">
           {tools.map((tool) => (
-            <li key={tool.file} className="tool" tabIndex={0}>
+            <li key={tool.file} className="tool">
               <img
                 src={`/tools/${tool.file}.svg`}
                 alt=""

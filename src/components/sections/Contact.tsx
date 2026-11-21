@@ -52,6 +52,7 @@ function ContactForm() {
   const emailEmpty = email.trim().length === 0
   const emailOk = EMAIL_RE.test(email.trim())
   const ready = nameOk && emailOk
+  const sentRef = useRef<HTMLHeadingElement>(null)
   const nameBad = tried && !nameOk
   const emailBad = tried && !emailOk
   const web = path === "web"
@@ -86,7 +87,8 @@ function ContactForm() {
         },
         publicKey,
       )
-      setStatus("sent")
+      flushSync(() => setStatus("sent"))
+      sentRef.current?.focus()
     } catch (err) {
       console.error(err)
       setStatus("failed")
@@ -108,7 +110,9 @@ function ContactForm() {
   if (status === "sent")
     return (
       <div role="status" className="flex flex-col gap-3 rounded-card bg-sage p-8 max-[600px]:p-6">
-        <h3 className="text-card font-medium text-on-sage">{t.sentTitle}</h3>
+        <h3 ref={sentRef} tabIndex={-1} className="text-card font-medium text-on-sage outline-none">
+          {t.sentTitle}
+        </h3>
         <p className="text-on-sage">{t.sentText}</p>
         <button type="button" className="tl cursor-pointer self-start text-accent-on-sage" onClick={again}>
           {t.again}

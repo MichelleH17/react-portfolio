@@ -533,6 +533,9 @@
   .totop {
     transition: none;
   }
+  .totop {
+    translate: none !important;
+  }
 }
 
 .hero-title .rollwrap {
@@ -701,14 +704,9 @@
   justify-content: center;
   min-height: 56px;
   border-radius: 10px;
-  outline: none;
 }
-.tool:hover,
-.tool:focus-visible {
+.tool:hover {
   background: var(--color-bg);
-}
-.tool:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-accent);
 }
 .tool img {
   height: 36px;
@@ -736,8 +734,7 @@
   transform: translate(-50%, 4px);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
-.tool:hover .name,
-.tool:focus .name {
+.tool:hover .name {
   opacity: 1;
   transform: translate(-50%, 0);
 }
@@ -860,7 +857,7 @@
     animation-delay: calc(var(--i) * 45ms);
   }
   .roll {
-    animation: roll2 7s cubic-bezier(0.7, 0, 0.2, 1) 1.4s infinite;
+    animation: roll2 7s cubic-bezier(0.7, 0, 0.2, 1) 1.4s 3;
   }
   .enter {
     animation: enter 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -872,7 +869,7 @@
     animation: iris 0.8s cubic-bezier(0.65, 0, 0.35, 1) both;
   }
   .hero-ring {
-    animation: ringin 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both, spin 32s linear 1.1s infinite;
+    animation: ringin 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both, spin 32s linear 1.1s 2;
   }
   .panel {
     animation: panel 0.35s ease both;

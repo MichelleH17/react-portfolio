@@ -18,8 +18,8 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
 }
 
 const langs = [
-  { lang: "en", label: "EN" },
-  { lang: "cs", label: "CS" },
+  { lang: "en", label: "EN", name: "English (EN)" },
+  { lang: "cs", label: "CS", name: "Čeština (CS)" },
 ] as const
 
 export function LangSwitch() {
@@ -27,12 +27,13 @@ export function LangSwitch() {
   const current = useLang()
   return (
     <div className="lang" role="group" aria-label={t.nav.langLabel}>
-      {langs.map(({ lang, label }) => (
+      {langs.map(({ lang, label, name }) => (
         <a
           key={lang}
           href={paths[lang]}
           hrefLang={lang}
           lang={lang}
+          aria-label={name}
           aria-current={lang === current ? "true" : undefined}
         >
           {label}
