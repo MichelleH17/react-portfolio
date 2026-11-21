@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://michaela-havlikova.vercel.app/sitemap.xml

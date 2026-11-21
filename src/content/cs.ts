@@ -1,0 +1,288 @@
+import { nbsp, type Content } from "./types"
+
+export const cs: Content = nbsp({
+  meta: {
+    title: "Michaela Havlíková | Webdesign a frontend vývoj",
+    description:
+      "Malým firmám stavím kompletní weby od návrhu až po spuštění. Jako frontend vývojářka (Vue.js, Nuxt, React) pracuji i v produktových týmech.",
+    ogLocale: "cs_CZ",
+  },
+  nav: {
+    label: "Hlavní navigace",
+    skip: "Přeskočit na obsah",
+    services: "Služby",
+    work: "Projekty",
+    about: "O~mně",
+    contact: "Kontakt",
+    cta: "Napište mi",
+    openMenu: "Otevřít menu",
+    closeMenu: "Zavřít menu",
+    menu: "Menu",
+    langLabel: "Jazyk",
+    themeToDark: "Přepnout na tmavý režim",
+    themeToLight: "Přepnout na světlý režim",
+  },
+  hero: {
+    title: "Webdesign a~vývoj pro malé firmy a~produktové týmy",
+    titleStart: "Webdesign a~vývoj~pro",
+    roll: ["malé firmy", "produktové týmy"],
+    leads: [
+      "Jmenuji se Michaela a~malým firmám stavím kompletní weby od návrhu až po spuštění. Jako frontend vývojářka pracuji také v~produktových týmech firem.",
+      "Přes~4 roky pracuji s~Vue.js, Nuxtem a~Ruby on Rails. React a~Next.js zatím používám na vlastních projektech a~chci s~nimi pracovat víc.",
+    ],
+    ctaPrimary: "Napište mi",
+    ctaSecondary: "Zobrazit projekty",
+    portraitAlt: "Portrét Michaely Havlíkové",
+  },
+  services: {
+    title: "Hledáte web nebo vývojářku do týmu?",
+    lead: "Vyberte, o~jakou spolupráci se jedná, a~níže se zobrazí vše podstatné.",
+    tabsLabel: "Způsoby spolupráce",
+    tabs: {
+      web: { title: "Potřebuji web", sub: "Pro malé firmy, živnostníky a~nové projekty" },
+      team: {
+        title: "Náš tým potřebuje frontend vývojářku",
+        sub: "Pro agentury a~firmy, v~případě potřeby i~s~designem",
+      },
+    },
+  },
+  web: {
+    intro:
+      "Web spolu naplánujeme, pak ho navrhnu ve Figmě, postavím a~spustím. Celou dobu jednáte s~jedním člověkem, od prvního hovoru až po spuštění. Po spuštění se o~web můžu dál starat.",
+    list: [
+      "Nový web nebo jednostránková prezentace",
+      "Redesign vašeho současného webu",
+      "Texty a~fotky si můžete upravovat sami",
+      "V~kódu nebo ve Frameru, podle toho, co web potřebuje",
+    ],
+    process: {
+      title: "Jak probíhá tvorba webu",
+      lead: "Čtyři kroky od prvního hovoru k~hotovému webu.",
+      steps: [
+        {
+          title: "Probereme to",
+          text: "Po telefonu, online nebo u~kávy v~Praze probereme, co má web umět, pro koho je a~kdy ho potřebujete.",
+        },
+        {
+          title: "Wireframe",
+          text: "Jednoduchý náčrt stránek, abychom si ujasnili rozložení a~směr dřív, než začnu navrhovat design.",
+        },
+        {
+          title: "Design ve Figmě",
+          text: "Na základě wireframu navrhnu vzhled stránek včetně typografie, barev a~obrázků a~společně ho doladíme.",
+        },
+        {
+          title: "Stavba a~spuštění",
+          text: "Web postavím a~spustím. Pokud si budete texty a~fotky upravovat sami, vytvořím vám k~tomu jednoduchou administraci a~ukážu, jak s~ní pracovat.",
+        },
+      ],
+      after: "Web můžu dál aktualizovat a~upravovat podle toho, jak vaše podnikání roste. Vždy se spolu domluvíme.",
+    },
+    prices: {
+      title: "Ceník",
+      lead: "Ceny jsou orientační. Přesnou nabídku vám pošlu po prvním hovoru, až budu vědět, co web potřebuje.",
+      plans: [
+        {
+          kind: "one",
+          title: "Jednostránkový web",
+          text: "Když vám stačí jedna stránka se službami, ukázkami a~kontaktem.",
+          priceNote: "od",
+          price: "15~000~Kč",
+          items: ["Sekce pro vaše služby, ukázky práce a~kontakt", "30 dní drobných úprav po spuštění"],
+          meta: "Obvykle 2 až 3 týdny",
+          cta: "Poptat jednostránkový web",
+        },
+        {
+          kind: "multi",
+          title: "Vícestránkový web",
+          text: "Když potřebujete víc stránek, třeba pro každou službu zvlášť.",
+          priceNote: "od",
+          price: "25~000~Kč",
+          items: [
+            "3 až 6 podstránek",
+            "SEO pro každou podstránku",
+            "Blog nebo novinky, pokud je potřebujete",
+            "60 dní drobných úprav po spuštění",
+          ],
+          meta: "Obvykle 3 až 4 týdny",
+          cta: "Poptat vícestránkový web",
+        },
+        {
+          kind: "redesign",
+          title: "Redesign webu",
+          text: "Když web máte, ale vypadá zastarale nebo nefunguje dobře na mobilu.",
+          priceNote: "cenu pošlu po rozboru webu",
+          price: "Podle rozsahu",
+          items: ["Rozbor současného webu", "Nový vzhled a~oprava mobilní verze"],
+          meta: "Termín podle rozsahu",
+          cta: "Poptat redesign webu",
+        },
+      ],
+      includedTitle: "V~ceně každého webu",
+      included: [
+        "Návrh vzhledu ve Figmě",
+        "Web pro mobil i~počítač",
+        "Základní SEO a~rychlé načítání",
+        "Návrh textů, nebo vložení vašich textů a~fotek",
+        "Administrace na texty a~fotky, pokud ji potřebujete",
+        "Spuštění na vaší doméně",
+      ],
+      care: {
+        title: "Správa webu po spuštění",
+        items: [
+          { text: "Základní správa, tedy aktualizace, zálohy a~kontrola, že web běží:", price: "od~600~Kč měsíčně" },
+          { text: "Správa i~s~drobnými úpravami textů a~fotek:", price: "od~1~200~Kč měsíčně" },
+          { text: "Jednorázové úpravy a~rozšíření:", price: "800~Kč za hodinu" },
+        ],
+      },
+      notIncluded: {
+        title: "Co není v~ceně webu",
+        items: [
+          "Doména a~hosting. Zařídím je na vaše jméno, vy mi je proplatíte a~po spuštění vám předám všechny přístupy.",
+          "Další jazyková verze",
+          "Přepínání světlého a~tmavého režimu",
+          "E-shop nebo složitější aplikace, cenu stanovím individuálně",
+        ],
+        vat: "Nejsem plátce DPH, k~uvedeným cenám se DPH nepřičítá.",
+      },
+      unsure: {
+        text: "Nevíte, co vybrat? Napište mi pár vět o~své firmě a~já vám řeknu, kterou variantu bych zvolila.",
+        cta: "Poradit s~výběrem",
+      },
+    },
+  },
+  team: {
+    intro:
+      "Pro agentury a~firmy. Do vašeho týmu se zapojím jako freelancer na IČO a~jsem otevřená i~stálé pozici. Stavím podle vašich návrhů ve Figmě a~navrhnu, co chybí.",
+    list: [
+      "Vue.js, Nuxt, React a~Next.js s~TypeScriptem",
+      "Návrhy stránek a~komponent ve Figmě",
+      "Design systémy a~knihovny komponent",
+      "Code review a~testy v~Playwrightu",
+      "Vývoj s~pomocí AI nástrojů",
+    ],
+    toolsTitle: "Nástroje, se kterými pracuji",
+    toolsMore: "Dále UnoCSS a~PrimeVue.",
+    jobsTitle: "Týmy, se kterými jsem pracovala",
+    jobs: [
+      {
+        years: "2025–2026",
+        company: "Localazy",
+        text: "Frontend vývojářka. Na firemním webu v~Nuxtu jsem vytvářela nové stránky a~redesignovala stávající, s~důrazem na responzivitu a~rychlost. Obsah byl v~Directusu, takže ho tým mohl měnit bez vývojáře. Pracovala jsem se sdílenou knihovnou znovupoužitelných komponent.",
+      },
+      {
+        years: "2025",
+        company: "Develit.io",
+        text: "Frontend vývojářka. Stavěla jsem rozhraní a~interaktivní prototypy webových aplikací ve Vue.js a~Nuxtu a~pomáhala položit základy design systému se znovupoužitelnými komponentami.",
+      },
+      {
+        years: "2021–2024",
+        company: "NejŘemeslníci.cz",
+        text: "Frontend vývojářka. Tři roky jsem podle návrhů ve Figmě stavěla responzivní stránky v~Ruby on Rails a~Hotwire, vytvářela znovupoužitelné komponenty, nasazovala nové funkce přes feature flagy a~účastnila se code review.",
+      },
+    ],
+    cta: "Poptat spolupráci",
+  },
+  projects: {
+    title: "Vybrané projekty",
+    lead: "Tři projekty, které ráda ukazuji, jeden vlastní a~dva z~týmů, ve kterých jsem pracovala.",
+    wip: "Probíhá redesign",
+    builtWith: "Technologie",
+    items: [
+      {
+        role: "Vlastní projekt, návrh i~vývoj",
+        title: "Rezervace apartmánů v~Nesebaru",
+        text: "Soukromý rezervační web pro dva apartmány v~Nesebaru v~Bulharsku. Společný kalendář ukazuje, kdo je kdy ubytovaný a~které termíny jsou volné. Má uživatelské účty, administraci a~e-mailová upozornění. Vše funguje a~teď předělávám jeho vzhled.",
+        tech: "Nuxt 4, Tailwind CSS, Drizzle a~Turso",
+        imageAlt: "Rezervační web, úvodní stránka",
+        frameLabel: "Navštívit rezervační web",
+        links: [
+          { label: "Navštívit web", href: "https://nesebar-booking-website.vercel.app/" },
+          { label: "Zobrazit kód", href: "https://github.com/MichelleH17/nesebar-booking-website" },
+        ],
+      },
+      {
+        role: "Frontend vývojářka, 2025–2026",
+        title: "Localazy",
+        text: "Lokalizační platforma, která firmám pomáhá překládat aplikace a~weby. Produktový manažer potřeboval upravovat stránky bez čekání na vývojáře. Vytvořila jsem proto v~Directusu kolekce a~sekce, ze kterých se stránky skládaly, a~každou sekci šlo zobrazit nebo skrýt. Testy v~Playwrightu hlídaly, aby se při změnách nic nerozbilo.",
+        tech: "Vue.js, Nuxt, TypeScript, Directus a~Playwright",
+        imageAlt: "Landing page Localazy",
+        frameLabel: "Navštívit localazy.com",
+        links: [{ label: "Navštívit localazy.com", href: "https://localazy.com/" }],
+      },
+      {
+        role: "Frontend vývojářka, 2021–2024",
+        title: "NejŘemeslníci.cz",
+        text: "Česká platforma, kde lidé hledají řemeslníky pro svůj domov. Tým potřeboval nové funkce nejdřív vyzkoušet na skutečných uživatelích. Tři roky jsem podle návrhů ve Figmě stavěla stránky pro mobil i~počítač a~komponenty, které tým používal napříč webem. Nové funkce šly ven přes feature flagy a~A/B testovaly se na celém webu.",
+        tech: "Ruby on Rails, Hotwire a~Tailwind CSS",
+        imageAlt: "Stránka NejŘemeslníci.cz",
+        frameLabel: "Navštívit nejremeslnici.cz",
+        links: [{ label: "Navštívit nejremeslnici.cz", href: "https://www.nejremeslnici.cz/" }],
+      },
+    ],
+  },
+  statement: {
+    label: "Na čem mi záleží",
+    words: "Dobrý web dává smysl lidem, kteří ho používají, i~těm, kteří se o~něj starají.".split(" "),
+    accent: [2, 3],
+  },
+  about: {
+    title: "O~mně",
+    paragraphs: [
+      "Hezký vzhled nestačí. Web musí plnit svůj účel, třeba řemeslníkovi přivést nové zákazníky. Práce s~návrhy ve Figmě mě naučila všímat si mezer, konzistence a~toho, jak se komponenta chová na mobilu.",
+      "Většinu toho, co umím, jsem se naučila na skutečných projektech: od Ruby on Rails a~Hotwire přes Vue.js a~Nuxt až po React a~Next.js.",
+      "Při vývoji používám AI nástroje. Zrychlují mi rutinní práci, takže mi zbyde víc času na to, co za mě neudělají: promyslet, co web potřebuje, a~otestovat, že dělá, co má.",
+    ],
+  },
+  contact: {
+    title: "Napište mi o~svém projektu",
+    leads: [
+      "Napište, co potřebujete a~zhruba kdy. Pomůže i~odkaz na váš současný web nebo návrhy.",
+      "Odpovím e-mailem a~pak si zavoláme, spojíme se online nebo zajdeme na kávu v~Praze.",
+    ],
+    directLabel: "Nebo mi napište přímo na e-mail",
+    form: {
+      topicLegend: "S~čím vám můžu pomoct?",
+      topics: {
+        web: { title: "Nový web nebo redesign", sub: "Pro vaši firmu nebo projekt" },
+        team: { title: "Spolupráce v~týmu", sub: "Pro agentury a~firmy" },
+      },
+      siteLabel: "Jaký web potřebujete?",
+      sites: {
+        unsure: "Zatím nevím",
+        one: "Jednostránkový web, od~15~000~Kč",
+        multi: "Vícestránkový web, od~25~000~Kč",
+        redesign: "Redesign webu",
+      },
+      name: "Jméno",
+      namePlaceholder: "Jana Nováková",
+      nameError: "Vyplňte jméno.",
+      email: "E-mail",
+      emailPlaceholder: "jana@firma.cz",
+      emailEmpty: "Vyplňte e-mail.",
+      emailWrong: "Zadejte e-mail ve tvaru jana@firma.cz.",
+      message: "Co potřebujete?",
+      messagePlaceholder: {
+        web: "Například: nový web pro můj ateliér, spuštění do konce března. Současný web je atelier.cz.",
+        team: "Například: do týmu hledáme frontend vývojářku na projekt v~Nuxtu, na 3 měsíce od února, převážně na dálku.",
+      },
+      fail: "Zprávu se nepodařilo odeslat.",
+      failRetry: "Zkuste to prosím znovu, nebo mi",
+      failLink: "napište přímo na e-mail",
+      sendWeb: "Odeslat poptávku",
+      sendTeam: "Odeslat zprávu",
+      sending: "Odesílám…",
+      sentTitle: "Zpráva byla úspěšně odeslána.",
+      sentText: "Odpovím vám e-mailem, obvykle do pár dní.",
+      again: "Poslat další zprávu",
+    },
+  },
+  footer: {
+    title: "Otevřená freelance zakázkám, týmovým projektům i~frontendovým pozicím",
+    cta: "Napište mi",
+    copyright: "© 2026 Michaela Havlíková",
+    cv: "Stáhnout CV (PDF)",
+    emailLabel: "Napsat e-mail",
+  },
+  backToTop: "Zpět nahoru",
+})
