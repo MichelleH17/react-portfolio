@@ -1,5 +1,5 @@
 import type { Lang } from "./content/types"
-import { LangContext, content } from "./i18n"
+import { LangContext } from "./i18n"
 import { Navbar } from "./components/layout/Navbar"
 import { BackToTop, Footer } from "./components/layout/Footer"
 import { Hero } from "./components/sections/Hero"
@@ -7,9 +7,9 @@ import { Services } from "./components/sections/Services"
 import { Projects } from "./components/sections/Projects"
 import { Statement } from "./components/sections/Statement"
 import { About } from "./components/sections/About"
+import { Contact } from "./components/sections/Contact"
 
 function App({ lang }: { lang: Lang }) {
-  const t = content[lang]
   return (
     <LangContext value={lang}>
       <Navbar />
@@ -19,11 +19,7 @@ function App({ lang }: { lang: Lang }) {
         <Projects />
         <Statement />
         <About />
-        <section id="contact" className="min-h-[90vh] py-26 max-[860px]:py-16">
-          <div className="wrap">
-            <h2 className="text-h2">{t.contact.title}</h2>
-          </div>
-        </section>
+        <Contact />
       </main>
       <BackToTop />
       <Footer />

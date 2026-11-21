@@ -1,243 +1,247 @@
-import { AlertCircle, CheckCircle, Mail, MapPin, Phone, Send } from "lucide-react"
-import { Container } from "../shared/Container"
-import { Button } from "../shared/Button"
-import { useState } from "react"
-import type { FormEvent } from "react"
-import emailjs, { EmailJSResponseStatus } from "@emailjs/browser"
+import { useRef, useState, type FormEvent } from "react"
+import { flushSync } from "react-dom"
+import emailjs from "@emailjs/browser"
+import { ChevronDown, Mail } from "lucide-react"
+import { EMAIL, useContent } from "@/i18n"
+import { useEnquiry, type EnquiryPath } from "@/store/EnquiryStore"
+import type { SiteKind } from "@/content/types"
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "michelle.hav17@gmail.com",
-    href: "mailto:michelle.hav17@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+420 724 304 557",
-    href: "tel:+420724304557",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Prague, CZ",
-    href: "#",
-  },
-]
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const plain = (s: string) => s.replaceAll("\u00a0", " ")
 
-export const Contact = () => { 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  })
+export function Contact() {
+  const t = useContent().contact
+  return (
+    <section id="contact" className="bg-bg py-26 max-[860px]:py-16">
+      <div className="wrap grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start gap-18 max-[860px]:grid-cols-1 max-[860px]:gap-8">
+        <div className="flex flex-col gap-5">
+          <h2 className="rise text-h2 font-normal">{t.title}</h2>
+          {t.leads.map((p) => (
+            <p key={p} className="rise text-lead text-body">
+              {p}
+            </p>
+          ))}
+          <div className="rise flex flex-col gap-1.5 pt-5">
+            <span className="text-meta text-muted">{t.directLabel}</span>
+            <a className="tl inline-flex items-center gap-2 self-start text-mail" href={`mailto:${EMAIL}`}>
+              <Mail size={20} aria-hidden="true" />
+              {EMAIL}
+            </a>
+          </div>
+        </div>
+        <ContactForm />
+      </div>
+    </section>
+  )
+}
 
-  const [isLoading, setIsLoading] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState({
-    type: "", // success || error
-    message: "",
-  })
+function ContactForm() {
+  const t = useContent().contact.form
+  const { path, site, setPath, pickSite } = useEnquiry()
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  const [tried, setTried] = useState(false)
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "failed">("idle")
+  const busy = useRef(false)
+  const nameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
+  const radios = useRef<Partial<Record<EnquiryPath, HTMLInputElement | null>>>({})
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const nameOk = name.trim().length > 0
+  const emailEmpty = email.trim().length === 0
+  const emailOk = EMAIL_RE.test(email.trim())
+  const ready = nameOk && emailOk
+  const nameBad = tried && !nameOk
+  const emailBad = tried && !emailOk
+  const web = path === "web"
 
-    setIsLoading(true)
-    setSubmitStatus({ type: "", message: "" })
+  const send = async (e: FormEvent) => {
+    e.preventDefault()
+    if (busy.current) return
+    if (!ready) {
+      setTried(true)
+      ;(nameOk ? emailRef : nameRef).current?.focus()
+      return
+    }
+    busy.current = true
+    setTried(false)
+    setStatus("sending")
+    const topic = plain(t.topics[path].title)
+    const siteText = web ? plain(t.sites[site]) : ""
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error(
-          "EmailJs configuration is missing. Please check your environment values."
-        )
-      }
-
+      if (!serviceId || !templateId || !publicKey) throw new Error("EmailJS is not configured")
       await emailjs.send(
-        serviceId, 
-        templateId, 
+        serviceId,
+        templateId,
         {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }, 
-        publicKey
+          name: name.trim(),
+          email: email.trim(),
+          message: [[topic, siteText].filter(Boolean).join(", "), message.trim()].filter(Boolean).join("\n\n"),
+          topic,
+          site: siteText,
+        },
+        publicKey,
       )
-
-      setSubmitStatus({
-        type: "success",
-        message: "Message sent successfully! I'll get back to you soon."
-      })
-      setFormData({ name: "", email: "", message: "" })
+      setStatus("sent")
     } catch (err) {
-      console.error("EmailJs error: ", err)
-      const message =
-        err instanceof EmailJSResponseStatus
-          ? err.text
-          : "Failed to send message. Please try again later."
-      setSubmitStatus({
-        type: "error",
-        message
-      })
+      console.error(err)
+      setStatus("failed")
     } finally {
-      setIsLoading(false)
+      busy.current = false
     }
   }
-  
+
+  const again = () => {
+    flushSync(() => {
+      setName("")
+      setEmail("")
+      setMessage("")
+      setStatus("idle")
+    })
+    radios.current[path]?.focus()
+  }
+
+  if (status === "sent")
+    return (
+      <div role="status" className="flex flex-col gap-3 rounded-card bg-sage p-8 max-[600px]:p-6">
+        <h3 className="text-card font-medium text-on-sage">{t.sentTitle}</h3>
+        <p className="text-on-sage">{t.sentText}</p>
+        <button type="button" className="tl cursor-pointer self-start text-accent-on-sage" onClick={again}>
+          {t.again}
+        </button>
+      </div>
+    )
+
+  const sending = status === "sending"
+
   return (
-    <section id="contact" className="pt-32 pb-20 md:pb-32 relative text-text-primary overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+    <form noValidate onSubmit={send} className="rise flex flex-col gap-5">
+      <fieldset>
+        <legend className="mb-3 text-meta font-semibold">{t.topicLegend}</legend>
+        <div className="grid grid-cols-2 gap-3 max-[600px]:grid-cols-1">
+          {(["web", "team"] as const).map((p) => (
+            <label key={p} className="opt">
+              <input
+                ref={(el) => {
+                  radios.current[p] = el
+                }}
+                type="radio"
+                name="topic"
+                value={p}
+                checked={path === p}
+                onChange={() => setPath(p)}
+              />
+              <span>
+                <span className="block font-semibold">{t.topics[p].title}</span>
+                <span className="block text-meta text-muted">{t.topics[p].sub}</span>
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      {web && (
+        <div className="field">
+          <label htmlFor="c-site">{t.siteLabel}</label>
+          <div className="relative">
+            <select id="c-site" className="w-full" value={site} onChange={(e) => pickSite(e.target.value as SiteKind)}>
+              {(Object.keys(t.sites) as SiteKind[]).map((k) => (
+                <option key={k} value={k}>
+                  {t.sites[k]}
+                </option>
+              ))}
+            </select>
+            <ChevronDown size={18} strokeWidth={2.25} aria-hidden="true" className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-ink" />
+          </div>
+        </div>
+      )}
+
+      <div className="grid grid-cols-2 gap-4 max-[600px]:grid-cols-1">
+        <div className="field">
+          <label htmlFor="c-name">
+            {t.name}
+            <span className="text-error" aria-hidden="true">
+              {" "}*
+            </span>
+          </label>
+          <input
+            ref={nameRef}
+            id="c-name"
+            type="text"
+            autoComplete="name"
+            required
+            aria-required="true"
+            aria-invalid={nameBad}
+            aria-describedby={nameBad ? "c-name-err" : undefined}
+            placeholder={t.namePlaceholder}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          {nameBad && (
+            <p id="c-name-err" className="err">
+              {t.nameError}
+            </p>
+          )}
+        </div>
+        <div className="field">
+          <label htmlFor="c-email">
+            {t.email}
+            <span className="text-error" aria-hidden="true">
+              {" "}*
+            </span>
+          </label>
+          <input
+            ref={emailRef}
+            id="c-email"
+            type="email"
+            autoComplete="email"
+            required
+            aria-required="true"
+            aria-invalid={emailBad}
+            aria-describedby={emailBad ? "c-email-err" : undefined}
+            placeholder={t.emailPlaceholder}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {emailBad && (
+            <p id="c-email-err" className="err">
+              {emailEmpty ? t.emailEmpty : t.emailWrong}
+            </p>
+          )}
+        </div>
       </div>
 
-      <Container className="relative z-10">
+      <div className="field">
+        <label htmlFor="c-msg">{t.message}</label>
+        <textarea id="c-msg" rows={5} placeholder={t.messagePlaceholder[path]} value={message} onChange={(e) => setMessage(e.target.value)} />
+      </div>
 
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <span className="text-navy text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Get in touch
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100">
-            Have a project{" "}
-            <span className="font-serif italic font-normal text-accent">
-              in mind?
-            </span>
-          </h2>
-          <div className="text-text-secondary text-lg animate-fade-in animation-delay-200">
-            <p>
-              I'm available for freelance projects: websites, frontend development and design work. Tell me what you have in mind and I'll get back to you.
-            </p>
-          </div>
-        </div>  
+      {status === "failed" && (
+        <p role="alert" className="rounded-box border border-error-line bg-error-bg px-4.5 py-4 text-meta text-error-text">
+          <b className="font-semibold">{t.fail}</b> {t.failRetry}{" "}
+          <a className="text-error-text underline hover:text-error-text" href={`mailto:${EMAIL}`}>
+            {t.failLink}
+          </a>
+          .
+        </p>
+      )}
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          <div className="card p-8 rounded-3xl animate-fade-in animation-delay-300">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2 text-text-secondary">
-                    Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value})}
-                  placeholder="Your name..."
-                  className="w-full px-4 py-3 rounded-xl bg-surface-muted text-text-primary border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2 text-text-secondary">
-                    Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value})}
-                  placeholder="your@email.com" className="w-full px-4 py-3 rounded-xl bg-surface-muted text-text-primary border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2 text-text-secondary">
-                    Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={6}
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value})}
-                  placeholder="Your message..." className="w-full px-4 py-3 rounded-xl bg-surface-muted text-text-primary border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all resize-none" />
-              </div>
-              <Button 
-                className="w-full" 
-                type="submit" 
-                size="lg"
-                disabled={isLoading}>
-                  {isLoading ? (
-                    <>Sending...</>
-                  ) : (
-                    <>
-                      Send message
-                      <Send className="w-5 h-5" />
-                    </>
-                  )}                  
-              </Button>
-
-              {submitStatus.type && (
-                <div
-                  className={`flex items-center gap-3
-                    p-4 rounded-xl ${
-                      submitStatus.type === "success"
-                        ? "bg-green-500/10 border border-green-500/30 text-green-700 dark:text-green-400"
-                        : "bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-400"
-                    }`}
-                >
-                  {submitStatus.type === "success" ? (
-                    <CheckCircle className="w-5 h-5 flex-shrink-0" />
-                  ) : (
-                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                  )}
-                  <p className="text-sm">{submitStatus.message}</p>
-                </div>
-              )}
-            </form>
-          </div>
-
-          {/* Contact info */}
-          <div className="space-y-6 animate-fade-in animation-delay-400">
-            <div className="card rounded-3xl p-8">
-              <h3 className="text-xl font-semibold mb-6 text-text-primary">
-                Contact information
-              </h3>
-              <div className="space-y-4">
-                {contactInfo.map((item, i) => (
-                  <a
-                    key={i}
-                    href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-accent-soft transition-colors group"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-accent-soft flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                      <item.icon className="w-5 h-5 text-accent" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-text-muted">
-                        {item.label}
-                      </div>
-                      <div className="font-medium text-text-primary">{item.value}</div>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Availability card */}
-            <div className="card rounded-3xl p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-3 h-3 bg-accent rounded-full animate-pulse" />
-                <span className="font-semibold text-lg text-text-primary">Available for freelance projects</span>
-              </div>
-              <p className="text-text-secondary text-sm">
-                Frontend is my main focus, but I can also help with web design, UX and other parts of a project.
-              </p>
-            </div>
-          </div>
-        </div>        
-      </Container>
-    </section>
+      <button type="submit" className="btn send self-start px-8" aria-disabled={!ready} aria-busy={sending}>
+        {sending ? (
+          <>
+            <span className="spinner" aria-hidden="true" />
+            {t.sending}
+          </>
+        ) : web ? (
+          t.sendWeb
+        ) : (
+          t.sendTeam
+        )}
+      </button>
+    </form>
   )
 }

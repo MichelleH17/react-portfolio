@@ -94,7 +94,7 @@ export interface Content {
       emailEmpty: string
       emailWrong: string
       message: string
-      messagePlaceholder: string
+      messagePlaceholder: { web: string; team: string }
       fail: string
       failRetry: string
       failLink: string

@@ -262,8 +262,10 @@ export const cs: Content = nbsp({
       emailEmpty: "Vyplňte e-mail.",
       emailWrong: "Zadejte e-mail ve tvaru jana@firma.cz.",
       message: "Co potřebujete?",
-      messagePlaceholder:
-        "Například: nový web pro můj ateliér, spuštění do konce března. Současný web je atelier.cz.",
+      messagePlaceholder: {
+        web: "Například: nový web pro můj ateliér, spuštění do konce března. Současný web je atelier.cz.",
+        team: "Například: do týmu hledáme frontend vývojářku na projekt v~Nuxtu, na 3 měsíce od února, převážně na dálku.",
+      },
       fail: "Zprávu se nepodařilo odeslat.",
       failRetry: "Zkuste to prosím znovu, nebo mi",
       failLink: "napište přímo na e-mail",

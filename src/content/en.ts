@@ -262,7 +262,10 @@ export const en: Content = nbsp({
       emailEmpty: "Enter your email.",
       emailWrong: "Enter an email like jana@company.com.",
       message: "What do you need?",
-      messagePlaceholder: "For example: a new website for my studio, live by the end of March. Our current site is studio.cz.",
+      messagePlaceholder: {
+        web: "For example: a new website for my studio, live by the end of March. Our current site is studio.cz.",
+        team: "For example: we need a frontend developer for a Nuxt project, three months from February, mostly remote.",
+      },
       fail: "Your message could not be sent.",
       failRetry: "Please try again, or",
       failLink: "email me directly",

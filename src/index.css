@@ -1083,3 +1083,119 @@
     background-size: 100% 3px;
   }
 }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.field > label {
+  font-size: var(--text-meta);
+  font-weight: 600;
+}
+.field input,
+.field textarea,
+.field select {
+  box-sizing: border-box;
+  width: 100%;
+  font: inherit;
+  font-size: var(--text-base);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  border: 1px solid var(--color-field);
+  border-radius: var(--radius-btn);
+  padding: 13px 14px;
+}
+.field select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 48px;
+}
+.field textarea {
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--color-muted);
+}
+.field input:hover,
+.field textarea:hover,
+.field select:hover,
+.opt:hover {
+  border-color: var(--color-field-hover);
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+.field [aria-invalid="true"],
+.field [aria-invalid="true"]:hover {
+  border-color: var(--color-error);
+}
+.field [aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 1px var(--color-error);
+}
+.err {
+  font-size: var(--text-meta);
+  color: var(--color-error);
+}
+.opt {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 18px;
+  border: 1px solid var(--color-field);
+  border-radius: var(--radius-box);
+  background: var(--color-bg);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.opt input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0.25em 0 0;
+  accent-color: var(--color-accent);
+}
+.opt:has(input:checked) {
+  border-color: var(--color-accent);
+  background: var(--color-sage);
+}
+.opt:has(input:focus-visible) {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.opt input:focus-visible {
+  outline: none;
+}
+.btn.send[aria-disabled="true"] {
+  background: transparent;
+  border-color: var(--color-field);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+.btn.send[aria-disabled="true"]:hover {
+  transform: none;
+}
+.btn.send[aria-busy="true"] {
+  cursor: progress;
+}
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--color-on-accent) 40%, transparent);
+  border-top-color: var(--color-on-accent);
+  animation: spin 0.7s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt {
+    transition: none;
+  }
+  .spinner {
+    animation-duration: 2s;
+  }
+}
