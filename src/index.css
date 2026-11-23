@@ -485,6 +485,12 @@
     right: 20px;
   }
 }
+/* Tall tablets in portrait (iPad Pro 13, Surface Pro): lower, so at the end of the page it sits between the character counter and the footer */
+@media (min-width: 861px) and (orientation: portrait) {
+  .totop {
+    bottom: calc(33vh - 120px);
+  }
+}
 @supports (animation-timeline: scroll()) {
   .totop {
     animation: totop linear both;
