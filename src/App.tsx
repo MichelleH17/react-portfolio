@@ -1,22 +1,29 @@
-import { Layout } from "./components/Layout"
+import type { Lang } from "./content/types"
+import { LangContext } from "./i18n"
+import { Navbar } from "./components/layout/Navbar"
+import { BackToTop, Footer } from "./components/layout/Footer"
+import { Hero } from "./components/sections/Hero"
+import { Services } from "./components/sections/Services"
+import { Projects } from "./components/sections/Projects"
+import { Statement } from "./components/sections/Statement"
 import { About } from "./components/sections/About"
 import { Contact } from "./components/sections/Contact"
-import { Experience } from "./components/sections/Experience"
-import { Hero } from "./components/sections/Hero"
-import { Projects } from "./components/sections/Projects"
-import { Values } from "./components/sections/Values"
 
-
-function App() {
+function App({ lang }: { lang: Lang }) {
   return (
-    <Layout title="Michaela Havlíková | Frontend developer & web designer">
-      <Hero />
-      <About />
-      <Projects />
-      <Experience />
-      <Values />
-      <Contact />
-    </Layout>
+    <LangContext value={lang}>
+      <Navbar />
+      <main id="main" tabIndex={-1} className="pt-[88px] outline-none max-[860px]:pt-[72px]">
+        <Hero />
+        <Services />
+        <Projects />
+        <Statement />
+        <About />
+        <Contact />
+      </main>
+      <BackToTop />
+      <Footer />
+    </LangContext>
   )
 }
 
