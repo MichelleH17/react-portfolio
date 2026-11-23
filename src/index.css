@@ -294,7 +294,8 @@
 }
 .nav {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  /* side columns never shrink below their content, so "Get in touch" stays on one line on iPad */
+  grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
   align-items: center;
   gap: 24px;
   height: 88px;
