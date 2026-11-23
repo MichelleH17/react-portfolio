@@ -73,7 +73,17 @@ export interface Content {
     lead: string
     wip: string
     builtWith: string
-    items: { role: string; title: string; text: string; tech: string; imageAlt: string; frameLabel: string; links: Link[] }[]
+    items: {
+      role: string
+      title: string
+      text: string
+      tech: string
+      image: string
+      imageAlt: string
+      frameLabel: string
+      wip?: boolean
+      links: [Link, ...Link[]]
+    }[]
   }
   statement: { label: string; words: string[]; accent: number[] }
   about: { title: string; paragraphs: string[] }

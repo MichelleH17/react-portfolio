@@ -10,7 +10,7 @@ export function Hero() {
   const [first, second] = t.hero.roll
   return (
     <section id="top" className="wrap py-16">
-      <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-start gap-16 max-[1000px]:grid-cols-1 max-[1000px]:gap-12 max-[860px]:gap-8">
+      <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-start gap-16 max-laptop:grid-cols-1 max-laptop:gap-12 max-tablet:gap-8">
         <div className="flex flex-col gap-7">
           <h1 className="hero-title text-h1 font-normal">
             <span className="sr-only">{t.hero.title}</span>
@@ -47,11 +47,15 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative aspect-square w-[500px] overflow-hidden max-w-full justify-self-end max-[1000px]:justify-self-center">
+        <div className="relative aspect-square w-[500px] overflow-hidden max-w-full justify-self-end max-laptop:justify-self-center">
           <RingText variant="portrait" text={RING_TEXT} className="hero-ring absolute inset-0 size-full text-lake" />
           <div className="iris absolute inset-[11%] overflow-hidden rounded-full">
             <picture>
-              <source srcSet="/michaela-photo.webp" type="image/webp" />
+              <source
+                srcSet="/michaela-photo-480.webp 480w, /michaela-photo-800.webp 800w"
+                sizes="(max-width: 520px) 70vw, 390px"
+                type="image/webp"
+              />
               <img
                 className="develop block size-full object-cover"
                 src="/michaela-photo.jpg"

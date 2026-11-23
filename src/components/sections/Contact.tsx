@@ -13,8 +13,8 @@ const plain = (s: string) => s.replaceAll("\u00a0", " ")
 export function Contact() {
   const t = useContent().contact
   return (
-    <section id="contact" className="bg-bg py-26 max-[860px]:py-16">
-      <div className="wrap grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start gap-18 max-[860px]:grid-cols-1 max-[860px]:gap-8">
+    <section id="contact" className="bg-bg py-26 max-tablet:py-16">
+      <div className="wrap grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start gap-18 max-tablet:grid-cols-1 max-tablet:gap-8">
         <div className="flex flex-col gap-5">
           <h2 className="rise text-h2 font-normal">{t.title}</h2>
           {t.leads.map((p) => (
@@ -117,7 +117,7 @@ function ContactForm() {
 
   if (status === "sent")
     return (
-      <div role="status" className="flex flex-col gap-3 rounded-card bg-sage p-8 max-[600px]:p-6">
+      <div role="status" className="flex flex-col gap-3 rounded-card bg-sage p-8 max-phone:p-6">
         <h3 ref={sentRef} tabIndex={-1} className="text-card font-medium text-on-sage outline-none">
           {t.sentTitle}
         </h3>
@@ -134,7 +134,7 @@ function ContactForm() {
     <form noValidate onSubmit={send} className="rise relative flex flex-col gap-5">
       <fieldset>
         <legend className="mb-3 text-meta font-semibold">{t.topicLegend}</legend>
-        <div className="grid grid-cols-2 gap-3 max-[600px]:grid-cols-1">
+        <div className="grid grid-cols-2 gap-3 max-phone:grid-cols-1">
           {(["web", "team"] as const).map((p) => (
             <label key={p} className="opt">
               <input
@@ -172,7 +172,7 @@ function ContactForm() {
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-4 max-[600px]:grid-cols-1">
+      <div className="grid grid-cols-2 gap-4 max-phone:grid-cols-1">
         <div className="field">
           <label htmlFor="c-name">
             {t.name}

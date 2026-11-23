@@ -1,8 +1,12 @@
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs"
 
 const SITE = "https://michaela-havlikova.vercel.app"
 const { render, renderNotFound, content, paths } = await import("../dist-ssr/entry-server.js")
 const template = readFileSync("dist/index.html", "utf8")
+// Preload the two font files Czech and English text needs, so the font is ready before first paint (no layout shift on swap)
+const fonts = readdirSync("dist/assets")
+  .filter((f) => /^hanken-grotesk-latin(-ext)?-wght-normal-.*\.woff2$/.test(f))
+  .map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`)
 const esc = (s) => s.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;")
 const SAME_AS = ["https://github.com/MichelleH17", "https://www.linkedin.com/in/michaela-havlikova/"]
 const JOB = { cs: "Webdesignérka a frontend vývojářka", en: "Web designer and frontend developer" }
@@ -41,6 +45,7 @@ for (const lang of ["cs", "en"]) {
   const { meta } = content[lang]
   const url = SITE + paths[lang]
   const head = [
+    ...fonts,
     `<link rel="canonical" href="${url}" />`,
     `<link rel="alternate" hreflang="cs" href="${SITE}${paths.cs}" />`,
     `<link rel="alternate" hreflang="en" href="${SITE}${paths.en}" />`,

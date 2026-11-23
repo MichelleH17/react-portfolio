@@ -50,9 +50,9 @@ function Prices() {
         <h3 className="rise text-subhead font-normal">{prices.title}</h3>
         <p className="rise text-lead max-w-[600px] text-body">{prices.lead}</p>
       </div>
-      <div className="grid grid-cols-3 gap-6 max-[1000px]:grid-cols-1">
+      <div className="grid grid-cols-3 gap-6 max-laptop:grid-cols-1">
         {prices.plans.map((plan, i) => (
-          <div key={plan.kind} className="price-card flex flex-col gap-[18px] rounded-card border border-field bg-bg p-9 max-[600px]:p-7">
+          <div key={plan.kind} className="price-card flex flex-col gap-[18px] rounded-card border border-field bg-bg p-9 max-phone:p-7">
             <h4 id={`plan-${plan.kind}`} className="text-card font-medium">
               {plan.title}
             </h4>
@@ -69,15 +69,15 @@ function Prices() {
           </div>
         ))}
       </div>
-      <div className="rise flex flex-col gap-3.5 rounded-card border border-field bg-bg p-8 max-[600px]:p-6">
+      <div className="rise flex flex-col gap-3.5 rounded-card border border-field bg-bg p-8 max-phone:p-6">
         <h4 className="text-box font-medium">{prices.includedTitle}</h4>
         <DashList
           items={prices.included}
-          className="grid! grid-cols-3 gap-x-10 text-body max-[1000px]:grid-cols-2 max-[600px]:grid-cols-1"
+          className="grid! grid-cols-3 gap-x-10 text-body max-laptop:grid-cols-2 max-phone:grid-cols-1"
         />
       </div>
-      <div className="grid grid-cols-2 gap-6 max-[600px]:grid-cols-1">
-        <div className="rise flex flex-col gap-3.5 rounded-card bg-sage p-8 text-on-sage max-[600px]:p-6">
+      <div className="grid grid-cols-2 gap-6 max-phone:grid-cols-1">
+        <div className="rise flex flex-col gap-3.5 rounded-card bg-sage p-8 text-on-sage max-phone:p-6">
           <h4 className="text-box font-medium text-ink">{prices.care.title}</h4>
           <ul className="dash">
             {prices.care.items.map((item) => (
@@ -87,7 +87,7 @@ function Prices() {
             ))}
           </ul>
         </div>
-        <div className="rise flex flex-col gap-3.5 rounded-card border border-field bg-bg p-8 text-body max-[600px]:p-6">
+        <div className="rise flex flex-col gap-3.5 rounded-card border border-field bg-bg p-8 text-body max-phone:p-6">
           <h4 className="text-box font-medium text-ink">{prices.notIncluded.title}</h4>
           <DashList items={prices.notIncluded.items} />
           <p className="text-meta text-muted">{prices.notIncluded.vat}</p>

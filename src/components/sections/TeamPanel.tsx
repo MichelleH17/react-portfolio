@@ -31,7 +31,7 @@ export function TeamPanel() {
           ))}
         </ul>
       </div>
-      <div className="rise flex flex-col gap-7 rounded-card border border-field bg-band p-10 max-[600px]:p-6">
+      <div className="rise flex flex-col gap-7 rounded-card border border-field bg-band p-10 max-phone:p-6">
         <h3 className="text-box font-medium">{t.toolsTitle}</h3>
         <ul className="tools">
           {tools.map((tool) => (
@@ -57,7 +57,7 @@ export function TeamPanel() {
             <li key={job.company}>
               <span className="dot" aria-hidden="true" />
               <span className="mb-0.5 text-meta text-muted">{job.years}</span>
-              <p className="text-[24px] leading-[1.2] font-medium tracking-[-0.02em] max-[860px]:text-[22px]">{job.company}</p>
+              <p className="text-[24px] leading-[1.2] font-medium tracking-[-0.02em] max-tablet:text-[22px]">{job.company}</p>
               <p className="mt-1 text-body">{job.text}</p>
             </li>
           ))}
