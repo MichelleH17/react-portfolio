@@ -18,8 +18,8 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
 }
 
 const langs = [
-  { lang: "en", label: "EN", name: "English (EN)" },
-  { lang: "cs", label: "CS", name: "Čeština (CS)" },
+  { lang: "en", label: "EN", name: "EN, English" },
+  { lang: "cs", label: "CS", name: "CS, Čeština" },
 ] as const
 
 export function LangSwitch() {

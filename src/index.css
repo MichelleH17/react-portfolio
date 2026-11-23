@@ -1075,7 +1075,7 @@
 }
 @keyframes wh {
   from {
-    color: color-mix(in srgb, var(--color-ink) 22%, transparent);
+    color: color-mix(in srgb, var(--color-ink) 60%, transparent);
   }
 }
 @keyframes line {
