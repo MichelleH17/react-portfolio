@@ -51,7 +51,7 @@ export function Navbar() {
       <div className="navbar">
         <header className="wrap nav">
           <a href="#" className="inline-flex items-center gap-3 justify-self-start no-underline">
-            <RingText variant="logo" text={RING_TEXT} className="ring-spin size-12 text-ink max-[600px]:size-10" />
+            <RingText variant="logo" text={RING_TEXT} className="ring-spin size-12 text-ink max-phone:size-10" />
             <Name />
           </a>
           <nav className="nav-links" aria-label={t.nav.label}>

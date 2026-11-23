@@ -4,6 +4,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  /* max-tablet: = width < 861px, the same as @media (max-width: 860px) below */
+  --breakpoint-phone: 601px;
+  --breakpoint-tablet: 861px;
+  --breakpoint-laptop: 1001px;
+
   --font-sans: "Hanken Grotesk Variable", system-ui, sans-serif;
 
   --color-bg: #fafaf8;
