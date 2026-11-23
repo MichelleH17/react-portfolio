@@ -1,9 +1,19 @@
+import { useSyncExternalStore } from "react"
 import { EMAIL, useContent } from "@/i18n"
 import { ArrowUp, Mail } from "lucide-react"
 import { LuGithub, LuLinkedin } from "react-icons/lu"
 
+const noop = () => () => {}
+const useYear = () =>
+  useSyncExternalStore(
+    noop,
+    () => new Date().getFullYear(),
+    () => __BUILD_YEAR__,
+  )
+
 export function Footer() {
   const t = useContent()
+  const year = useYear()
   return (
     <footer className="border-t border-line bg-band pt-16 pb-7">
       <div className="wrap flex flex-col gap-12">
@@ -14,9 +24,11 @@ export function Footer() {
           </a>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-6 border-t border-line pt-6">
-          <span className="text-tag text-muted">{t.footer.copyright}</span>
+          <span className="text-tag text-muted">
+            © {year} {t.footer.copyright}
+          </span>
           <div className="flex flex-wrap items-center gap-6">
-            <a className="tl" href="/cv_havlikova_en.pdf">
+            <a className="tl" href={t.footer.cvHref}>
               {t.footer.cv}
             </a>
             <div className="flex gap-3">

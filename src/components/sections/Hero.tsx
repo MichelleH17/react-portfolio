@@ -10,7 +10,7 @@ export function Hero() {
   const [first, second] = t.hero.roll
   return (
     <section id="top" className="wrap py-16">
-      <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-center gap-16 max-[1000px]:grid-cols-1 max-[1000px]:gap-12 max-[860px]:gap-8">
+      <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-start gap-16 max-[1000px]:grid-cols-1 max-[1000px]:gap-12 max-[860px]:gap-8">
         <div className="flex flex-col gap-7">
           <h1 className="hero-title text-h1 font-normal">
             <span className="sr-only">{t.hero.title}</span>

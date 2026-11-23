@@ -56,7 +56,7 @@ export function Navbar() {
           </a>
           <nav className="nav-links" aria-label={t.nav.label}>
             {links.map((l) => (
-              <a key={l.href} href={l.href}>
+              <a key={l.href} className="tl" href={l.href}>
                 {l.label}
               </a>
             ))}
@@ -77,17 +77,18 @@ export function Navbar() {
 
       <dialog ref={menu} className="mmenu" aria-label={t.nav.menu} onClose={() => setOpen(false)} onClick={onDialogClick}>
         <div className="flex h-[72px] items-center justify-between">
-          <a href="#" className="no-underline" onClick={goTo}>
+          <a href="#" className="inline-flex items-center gap-3 no-underline" onClick={goTo}>
+            <RingText variant="logo" text={RING_TEXT} className="ring-spin size-10 text-ink" />
             <Name />
           </a>
           <button type="button" className="icon-btn" aria-label={t.nav.closeMenu} onClick={() => menu.current?.close()}>
             <X size={20} />
           </button>
         </div>
-        <nav className="mm-links flex flex-col pt-6" aria-label={t.nav.label}>
+        <nav className="mm-links flex flex-col gap-4 pt-6" aria-label={t.nav.label}>
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={goTo}>
-              {l.label}
+              <span className="tl">{l.label}</span>
             </a>
           ))}
         </nav>

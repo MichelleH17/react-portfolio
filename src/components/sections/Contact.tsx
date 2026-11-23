@@ -6,6 +6,7 @@ import { EMAIL, useContent } from "@/i18n"
 import { useEnquiry, type EnquiryPath } from "@/store/EnquiryStore"
 import type { SiteKind } from "@/content/types"
 
+const MESSAGE_MAX = 1000
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const plain = (s: string) => s.replaceAll("\u00a0", " ")
 
@@ -44,6 +45,7 @@ function ContactForm() {
   const [tried, setTried] = useState(false)
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "failed">("idle")
   const busy = useRef(false)
+  const trap = useRef<HTMLInputElement>(null)
   const nameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
   const radios = useRef<Partial<Record<EnquiryPath, HTMLInputElement | null>>>({})
@@ -67,6 +69,12 @@ function ContactForm() {
     }
     busy.current = true
     setTried(false)
+    if (trap.current?.value) {
+      flushSync(() => setStatus("sent"))
+      sentRef.current?.focus()
+      busy.current = false
+      return
+    }
     setStatus("sending")
     const topic = plain(t.topics[path].title)
     const siteText = web ? plain(t.sites[site]) : ""
@@ -123,7 +131,7 @@ function ContactForm() {
   const sending = status === "sending"
 
   return (
-    <form noValidate onSubmit={send} className="rise flex flex-col gap-5">
+    <form noValidate onSubmit={send} className="rise relative flex flex-col gap-5">
       <fieldset>
         <legend className="mb-3 text-meta font-semibold">{t.topicLegend}</legend>
         <div className="grid grid-cols-2 gap-3 max-[600px]:grid-cols-1">
@@ -177,6 +185,7 @@ function ContactForm() {
             id="c-name"
             type="text"
             autoComplete="name"
+            maxLength={100}
             required
             aria-required="true"
             aria-invalid={nameBad}
@@ -203,6 +212,7 @@ function ContactForm() {
             id="c-email"
             type="email"
             autoComplete="email"
+            maxLength={254}
             required
             aria-required="true"
             aria-invalid={emailBad}
@@ -221,7 +231,22 @@ function ContactForm() {
 
       <div className="field">
         <label htmlFor="c-msg">{t.message}</label>
-        <textarea id="c-msg" rows={5} placeholder={t.messagePlaceholder[path]} value={message} onChange={(e) => setMessage(e.target.value)} />
+        <textarea
+          id="c-msg"
+          rows={5}
+          maxLength={MESSAGE_MAX}
+          aria-describedby="c-msg-count"
+          placeholder={t.messagePlaceholder[path]}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <p id="c-msg-count" className="self-end text-meta text-muted">
+          {message.length} / {MESSAGE_MAX}
+        </p>
+      </div>
+      <div className="absolute -left-[9999px] size-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="c-web">Website</label>
+        <input ref={trap} id="c-web" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       {status === "failed" && (

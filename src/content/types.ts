@@ -106,8 +106,9 @@ export interface Content {
       again: string
     }
   }
-  footer: { title: string; cta: string; copyright: string; cv: string; emailLabel: string }
+  footer: { title: string; cta: string; copyright: string; cv: string; cvHref: string; emailLabel: string }
   backToTop: string
+  notFound: { title: string; text: string; cta: string }
 }
 
 export function nbsp<T>(value: T): T {

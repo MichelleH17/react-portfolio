@@ -18,7 +18,7 @@ export function Projects() {
               <a
                 href={p.links[0].href}
                 aria-label={p.frameLabel}
-                className={`frame relative block aspect-[4/3] overflow-hidden rounded-card border border-line ${wip ? "wip bg-band" : ""} ${i === 1 ? "min-[861px]:order-2" : ""}`}
+                className={`frame relative block aspect-[4/3] overflow-hidden rounded-card border border-field ${wip ? "wip bg-band" : ""} ${i === 1 ? "min-[861px]:order-2" : ""}`}
               >
                 <img src={images[i]} alt={p.imageAlt} width={1282} height={1476} loading="lazy" className="size-full object-cover object-top" />
                 {wip && <span className="absolute bottom-4 left-4 rounded-btn bg-ink px-3.5 py-2 text-tag font-semibold leading-none text-bg">{t.wip}</span>}

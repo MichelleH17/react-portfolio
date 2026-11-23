@@ -31,7 +31,7 @@ export function TeamPanel() {
           ))}
         </ul>
       </div>
-      <div className="rise flex flex-col gap-7 rounded-card border border-line bg-band p-10 max-[600px]:p-6">
+      <div className="rise flex flex-col gap-7 rounded-card border border-field bg-band p-10 max-[600px]:p-6">
         <h3 className="text-box font-medium">{t.toolsTitle}</h3>
         <ul className="tools">
           {tools.map((tool) => (

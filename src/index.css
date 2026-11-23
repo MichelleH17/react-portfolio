@@ -21,8 +21,6 @@
   --color-on-sky: #253a52;
   --color-lichen: #9fb7ab;
   --color-field: #7f9288;
-  --color-field-hover: #55625f;
-  --color-card-hover: #9fb7ab;
   --color-accent-on-sage: #1f6e52;
   --color-lake: #3e6d9b;
   --color-error: #b3261e;
@@ -86,8 +84,6 @@
   --color-on-sky: #d6e2ee;
   --color-lichen: #3f584f;
   --color-field: #4f6d62;
-  --color-field-hover: #678a7d;
-  --color-card-hover: #4a675c;
   --color-accent-on-sage: #6fd3a8;
   --color-lake: #6fa8dc;
   --color-error: #ff8a80;
@@ -304,11 +300,7 @@
   gap: 32px;
 }
 .nav-links a {
-  color: var(--color-body);
-  text-decoration: none;
-}
-.nav-links a:hover {
-  color: var(--color-accent);
+  font-size: 20px;
 }
 .nav-tools {
   justify-self: end;
@@ -421,14 +413,13 @@
   display: flex;
   align-items: center;
   min-height: 56px;
-  border-bottom: 1px solid var(--color-line);
-  color: var(--color-ink);
+  color: var(--color-accent);
   font-size: 30px;
   letter-spacing: -0.025em;
   text-decoration: none;
 }
-.mm-links a:hover {
-  color: var(--color-accent);
+.mm-links a:hover .tl {
+  background-size: 100% 1px;
 }
 @media (min-width: 601px) {
   .mmenu {
@@ -588,6 +579,13 @@
 .tab:hover {
   transform: translateY(-2px);
 }
+.tab[aria-selected="false"]:hover,
+.frame:hover {
+  border-color: var(--color-accent);
+}
+.frame {
+  transition: border-color 0.25s ease;
+}
 .panel {
   display: flex;
   flex-direction: column;
@@ -686,7 +684,7 @@
 }
 .price-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-card-hover);
+  border-color: var(--color-accent);
 }
 
 .tools {
@@ -1119,7 +1117,7 @@
 .field textarea:hover,
 .field select:hover,
 .opt:hover {
-  border-color: var(--color-field-hover);
+  border-color: var(--color-accent);
 }
 .field input:focus,
 .field textarea:focus,

@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 
 const SITE = "https://michaela-havlikova.vercel.app"
-const { render, content, paths } = await import("../dist-ssr/entry-server.js")
+const { render, renderNotFound, content, paths } = await import("../dist-ssr/entry-server.js")
 const template = readFileSync("dist/index.html", "utf8")
 const esc = (s) => s.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;")
 const SAME_AS = ["https://github.com/MichelleH17", "https://www.linkedin.com/in/michaela-havlikova/"]
@@ -70,5 +70,15 @@ for (const lang of ["cs", "en"]) {
   writeFileSync(out, html)
   console.log(`prerendered ${out}`)
 }
+
+const notFound = template
+  .replace(/<title>.*<\/title>/, () => `<title>${esc(content.cs.notFound.title)} | Michaela Havlíková</title>`)
+  .replace(/<meta name="description" content="[^"]*" \/>/, () => `<meta name="robots" content="noindex" />`)
+  .replace(/<script type="module"[^>]*><\/script>/, "")
+  .replace(/<link rel="modulepreload"[^>]*>/g, "")
+  .replace("<!--app-head-->", "")
+  .replace("<!--app-html-->", () => renderNotFound())
+writeFileSync("dist/404.html", notFound)
+console.log("prerendered dist/404.html")
 
 rmSync("dist-ssr", { recursive: true, force: true })

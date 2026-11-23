@@ -90,7 +90,7 @@ export const en: Content = nbsp({
           price: "15,000~CZK",
           items: ["Sections for your services, work and contact", "30 days of small fixes after launch"],
           meta: "Usually 2 to~3 weeks",
-          cta: "Ask about a~one-page site",
+          cta: "Ask about a~site",
         },
         {
           kind: "multi",
@@ -105,7 +105,7 @@ export const en: Content = nbsp({
             "60 days of small fixes after launch",
           ],
           meta: "Usually 3 to~4 weeks",
-          cta: "Ask about a~multi-page site",
+          cta: "Ask about a~site",
         },
         {
           kind: "redesign",
@@ -115,7 +115,7 @@ export const en: Content = nbsp({
           price: "Individual price",
           items: ["A~review of your current site", "A~new look and a~fixed mobile version"],
           meta: "Timing depends on the scope",
-          cta: "Ask about a~website redesign",
+          cta: "Ask about a~redesign",
         },
       ],
       includedTitle: "Included in every website",
@@ -280,9 +280,15 @@ export const en: Content = nbsp({
   footer: {
     title: "Open to freelance work, team projects and frontend roles",
     cta: "Get in touch",
-    copyright: "© 2026 Michaela Havlíková",
+    copyright: "Michaela Havlíková",
     cv: "Download my CV (PDF)",
+    cvHref: "/cv_havlikova_en.pdf",
     emailLabel: "Send an email",
   },
   backToTop: "Back to top",
+  notFound: {
+    title: "This page doesn't exist",
+    text: "The link may be old, or there is a~typo in the address.",
+    cta: "Go to the English version",
+  },
 })

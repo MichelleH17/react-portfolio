@@ -54,7 +54,7 @@ export function Services() {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setPath(p)}
                 onKeyDown={onKey}
-                className={`tab flex cursor-pointer flex-col gap-2 rounded-card border-2 px-9 py-8 text-left text-ink max-[860px]:p-6 ${selected ? look[p].on : "border-line bg-bg"}`}
+                className={`tab flex cursor-pointer flex-col gap-2 rounded-card border-2 px-9 py-8 text-left text-ink max-[860px]:p-6 ${selected ? look[p].on : "border-field bg-bg"}`}
               >
                 <span className={`text-tab font-medium ${look[p].title}`}>{t.services.tabs[p].title}</span>
                 <span className="text-body">{t.services.tabs[p].sub}</span>

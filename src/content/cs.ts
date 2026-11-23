@@ -90,7 +90,7 @@ export const cs: Content = nbsp({
           price: "15~000~Kč",
           items: ["Sekce pro vaše služby, ukázky práce a~kontakt", "30 dní drobných úprav po spuštění"],
           meta: "Obvykle 2 až 3 týdny",
-          cta: "Poptat jednostránkový web",
+          cta: "Poptat web",
         },
         {
           kind: "multi",
@@ -105,7 +105,7 @@ export const cs: Content = nbsp({
             "60 dní drobných úprav po spuštění",
           ],
           meta: "Obvykle 3 až 4 týdny",
-          cta: "Poptat vícestránkový web",
+          cta: "Poptat web",
         },
         {
           kind: "redesign",
@@ -280,9 +280,15 @@ export const cs: Content = nbsp({
   footer: {
     title: "Otevřená freelance zakázkám, týmovým projektům i~frontendovým pozicím",
     cta: "Napište mi",
-    copyright: "© 2026 Michaela Havlíková",
+    copyright: "Michaela Havlíková",
     cv: "Stáhnout CV (PDF)",
+    cvHref: "/cv_havlikova_cz.pdf",
     emailLabel: "Napsat e-mail",
   },
   backToTop: "Zpět nahoru",
+  notFound: {
+    title: "Tahle stránka neexistuje",
+    text: "Odkaz je možná starý nebo je v~adrese překlep.",
+    cta: "Zpět na úvod",
+  },
 })
