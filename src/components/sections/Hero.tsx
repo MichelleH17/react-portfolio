@@ -51,7 +51,11 @@ export function Hero() {
           <RingText variant="portrait" text={RING_TEXT} className="hero-ring absolute inset-0 size-full text-lake" />
           <div className="iris absolute inset-[11%] overflow-hidden rounded-full">
             <picture>
-              <source srcSet="/michaela-photo.webp" type="image/webp" />
+              <source
+                srcSet="/michaela-photo-480.webp 480w, /michaela-photo-800.webp 800w"
+                sizes="(max-width: 520px) 70vw, 390px"
+                type="image/webp"
+              />
               <img
                 className="develop block size-full object-cover"
                 src="/michaela-photo.jpg"

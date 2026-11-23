@@ -1,6 +1,5 @@
 import { useRef, useState, type FormEvent } from "react"
 import { flushSync } from "react-dom"
-import emailjs from "@emailjs/browser"
 import { ChevronDown, Mail } from "lucide-react"
 import { EMAIL, useContent } from "@/i18n"
 import { useEnquiry, type EnquiryPath } from "@/store/EnquiryStore"
@@ -83,6 +82,7 @@ function ContactForm() {
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       if (!serviceId || !templateId || !publicKey) throw new Error("EmailJS is not configured")
+      const { default: emailjs } = await import("@emailjs/browser")
       await emailjs.send(
         serviceId,
         templateId,
