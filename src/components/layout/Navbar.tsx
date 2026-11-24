@@ -19,6 +19,7 @@ export function Navbar() {
 
   const openMenu = () => {
     menu.current?.showModal()
+    menu.current?.focus()
     setOpen(true)
   }
 
@@ -75,10 +76,10 @@ export function Navbar() {
         <span className="progress" aria-hidden="true" />
       </div>
 
-      <dialog ref={menu} className="mmenu" aria-label={t.nav.menu} onClose={() => setOpen(false)} onClick={onDialogClick}>
-        <div className="flex h-[72px] items-center justify-between">
+      <dialog ref={menu} className="mmenu" tabIndex={-1} aria-label={t.nav.menu} onClose={() => setOpen(false)} onClick={onDialogClick}>
+        <div className="mm-head flex shrink-0 items-center justify-between">
           <a href="#" className="inline-flex items-center gap-3 no-underline" onClick={goTo}>
-            <RingText variant="logo" text={RING_TEXT} className="ring-spin size-10 text-ink" />
+            <RingText variant="logo" text={RING_TEXT} className="ring-spin size-12 text-ink max-phone:size-10" />
             <Name />
           </a>
           <button type="button" className="icon-btn" aria-label={t.nav.closeMenu} onClick={() => menu.current?.close()}>
@@ -92,7 +93,7 @@ export function Navbar() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center justify-between pt-10">
+        <div className="mb-20 flex items-center justify-between pt-10">
           <LangSwitch />
           <ThemeToggle className="size-12!" />
         </div>
