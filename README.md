@@ -53,23 +53,9 @@ npm install
 npm run dev
 ```
 
-The contact form needs EmailJS keys in `.env`:
-
-```
-VITE_EMAILJS_SERVICE_ID=
-VITE_EMAILJS_TEMPLATE_ID=
-VITE_EMAILJS_PUBLIC_KEY=
-```
-
-Without them the form shows its error state and offers the email link instead.
-
 ## Scripts
 
 - `npm run dev`: dev server
 - `npm run build`: type check, client build, server build and prerender into `dist/`
 - `npm run preview`: serve the production build
 - `npm run lint`: ESLint
-
-## Security headers
-
-`vercel.json` sets a Content Security Policy. The inline script in `index.html` that applies dark mode before the first paint is allowed by its sha256 hash. If you edit that script, update the hash in `vercel.json`, otherwise the browser blocks it.
