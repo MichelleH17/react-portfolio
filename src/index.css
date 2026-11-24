@@ -300,6 +300,9 @@
   gap: 24px;
   height: 88px;
 }
+.mm-head {
+  height: 88px;
+}
 .nav-links {
   display: flex;
   align-items: center;
@@ -340,7 +343,8 @@
   }
 }
 @media (max-width: 860px) {
-  .nav {
+  .nav,
+  .mm-head {
     height: 72px;
   }
 }
@@ -356,7 +360,8 @@
       animation-timeline: scroll(root);
       animation-range: 0 160px;
     }
-    .nav {
+    .nav,
+    .mm-head {
       animation: navshrink linear both;
       animation-timeline: scroll(root);
       animation-range: 0 160px;
@@ -407,6 +412,9 @@
   background: var(--color-bg);
   color: var(--color-ink);
   flex-direction: column;
+}
+.mmenu:focus {
+  outline: none;
 }
 .mmenu[open] {
   display: flex;
