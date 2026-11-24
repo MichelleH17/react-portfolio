@@ -2,8 +2,10 @@ import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "nod
 
 const SITE = "https://michaela-havlikova.vercel.app"
 const { render, renderNotFound, content, paths } = await import("../dist-ssr/entry-server.js")
-const template = readFileSync("dist/index.html", "utf8")
-// Preload the two font files Czech and English text needs, so the font is ready before first paint (no layout shift on swap)
+const template = readFileSync("dist/index.html", "utf8").replace(
+  /<link rel="stylesheet"[^>]*href="\/(assets\/[^"]+\.css)"[^>]*>/,
+  (_, file) => `<style>${readFileSync(`dist/${file}`, "utf8")}</style>`,
+)
 const fonts = readdirSync("dist/assets")
   .filter((f) => /^hanken-grotesk-latin(-ext)?-wght-normal-.*\.woff2$/.test(f))
   .map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`)
