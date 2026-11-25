@@ -28,6 +28,8 @@ export interface Content {
     ctaPrimary: string
     ctaSecondary: string
     portraitAlt: string
+    pauseMotion: string
+    playMotion: string
   }
   services: {
     title: string
