@@ -29,10 +29,13 @@ export const cs: Content = nbsp({
     leads: [
       "Jmenuji se Michaela a~malým firmám stavím kompletní weby od návrhu až po spuštění. Jako frontend vývojářka pracuji také v~produktových týmech firem.",
       "Přes~4 roky pracuji s~Vue.js, Nuxtem a~Ruby on Rails. React a~Next.js zatím používám na vlastních projektech a~chci s~nimi pracovat víc.",
+      "Při vývoji používám AI nástroje. Zrychlují mi rutinní práci, takže mi zbyde víc času na to, co za mě neudělají: promyslet, co web potřebuje, a~otestovat, že dělá, co má.",
     ],
     ctaPrimary: "Napište mi",
     ctaSecondary: "Zobrazit projekty",
     portraitAlt: "Portrét Michaely Havlíkové",
+    pauseMotion: "Zastavit animaci",
+    playMotion: "Spustit animaci",
   },
   services: {
     title: "Hledáte web nebo vývojářku do týmu?",
@@ -235,7 +238,6 @@ export const cs: Content = nbsp({
     paragraphs: [
       "Hezký vzhled nestačí. Web musí plnit svůj účel, třeba řemeslníkovi přivést nové zákazníky. Práce s~návrhy ve Figmě mě naučila všímat si mezer, konzistence a~toho, jak se komponenta chová na mobilu.",
       "Většinu toho, co umím, jsem se naučila na skutečných projektech: od Ruby on Rails a~Hotwire přes Vue.js a~Nuxt až po React a~Next.js.",
-      "Při vývoji používám AI nástroje. Zrychlují mi rutinní práci, takže mi zbyde víc času na to, co za mě neudělají: promyslet, co web potřebuje, a~otestovat, že dělá, co má.",
     ],
   },
   contact: {

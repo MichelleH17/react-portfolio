@@ -1,4 +1,5 @@
-import { Fragment, type CSSProperties } from "react"
+import { Fragment, useState, type CSSProperties } from "react"
+import { Pause, Play } from "lucide-react"
 import { useContent } from "@/i18n"
 import { RingText } from "../ui/RingText"
 
@@ -8,8 +9,9 @@ export function Hero() {
   const t = useContent()
   const words = t.hero.titleStart.split(" ")
   const [first, second] = t.hero.roll
+  const [paused, setPaused] = useState(false)
   return (
-    <section id="top" className="wrap py-16">
+    <section id="top" className={`wrap py-16 ${paused ? "paused" : ""}`}>
       <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-start gap-16 max-laptop:grid-cols-1 max-laptop:gap-12 max-tablet:gap-8">
         <div className="flex flex-col gap-7">
           <h1 className="hero-title text-h1 font-normal">
@@ -66,6 +68,14 @@ export function Hero() {
               />
             </picture>
           </div>
+          <button
+            type="button"
+            className="icon-btn absolute right-2 bottom-2 size-7 border-transparent bg-transparent opacity-60 hover:opacity-100 focus-visible:opacity-100 motion-reduce:hidden"
+            aria-label={paused ? t.hero.playMotion : t.hero.pauseMotion}
+            onClick={() => setPaused(!paused)}
+          >
+            {paused ? <Play size={14} /> : <Pause size={14} />}
+          </button>
         </div>
       </div>
     </section>

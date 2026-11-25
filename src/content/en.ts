@@ -29,10 +29,13 @@ export const en: Content = nbsp({
     leads: [
       "I'm Michaela and I~build complete websites for small businesses, from design to launch. I~also work as a~frontend developer in product teams.",
       "Over~4 years with Vue.js, Nuxt and Ruby on Rails. React and Next.js so far on my own projects, and I~want to use them more.",
+      "I~use AI tools when I~build. They speed up the routine work, so I~have more time for what they can't do for me: thinking through what the site needs and testing that it does what it should.",
     ],
     ctaPrimary: "Get in touch",
     ctaSecondary: "See my projects",
     portraitAlt: "Portrait of Michaela Havlíková",
+    pauseMotion: "Pause animation",
+    playMotion: "Play animation",
   },
   services: {
     title: "Need a~website or a~developer for your team?",
@@ -235,7 +238,6 @@ export const en: Content = nbsp({
     paragraphs: [
       "Good looks aren't enough. A~website has to do its job, for example bring a~tradesperson new customers. Working from Figma designs taught me to notice spacing, consistency and how a~component behaves on a~phone.",
       "Most of what I~know I~learned by building real things, from Ruby on Rails and Hotwire to Vue.js and Nuxt, and now React and Next.js.",
-      "I~use AI tools when I~build. They speed up the routine work, so I~have more time for what they can't do for me: thinking through what the site needs and testing that it does what it should.",
     ],
   },
   contact: {
